@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+.main {
+    height: 100%;
+}
+
+/* main-nav */
+
+.main-nav {
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.nav-links {
+    width: 30%;
+}
+
+.nav-links>* {
+    text-decoration: none;
+}
+
+/* Aside-bar */
+
+.aside-bar {
+    background-color: beige;
+    flex: 0 0 25%;
+    /* height: 100%; */
+}
+
+/* Helpers  */
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-evenely {
+    justify-content: space-evenly;
+}
+
+.space-around {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex-grow: 1;
+}
+
+/* list-helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* hide-helpers */
+
+.hidden {
+    display: none;
+}
