@@ -1,9 +1,7 @@
-import { AsideBar } from '../../cmps/AsideBar.jsx'
+// import { AsideBar } from '../../cmps/AsideBar.jsx'
 import { keepService } from './services/keep-service.js'
-import { KeepEdit } from './cmps/keep-app/KeepEdit.jsx'
+import { KeepAdd } from './cmps/keep-app/KeepAdd.jsx'
 import { KeepList } from './cmps/keep-app/KeepList.jsx'
-import { DynamicCmps } from './cmps/notes-app/DynamicCmps.jsx'
-
 
 export class KeepApp extends React.Component {
     state = {
@@ -18,7 +16,6 @@ export class KeepApp extends React.Component {
     loadKeeps() {
         keepService.query()
             .then(keeps => {
-                console.log(keeps);
                 this.setState({ keeps })
             })
     }
@@ -28,20 +25,24 @@ export class KeepApp extends React.Component {
     }
     
     removeKeep = (keepId) => {
-        console.log('on app remove');
-        console.log(keepId);
         keepService.removeKeep(keepId).then(()=>{this.loadKeeps()})
+    }
+
+    styleChange = (keepId, color) => {
+        keepService.updateColor(keepId, color).then(()=>{this.loadKeeps()})
+    }
+
+    copyKeep = (keep) =>{
+        keepService.copyKeep(keep).then(()=>{this.loadKeeps()})
     }
 
     render() {
         const keepsToShow = this.state.keeps;
         return (
-            <section className="keep-app flex">
-                <AsideBar />
-                <div>
-                    <h2>Keep App</h2>
-                    <KeepEdit onAddKeep={this.addKeep} />
-                    <KeepList keeps={keepsToShow} onRemove={this.removeKeep}/>
+            <section className="keep-app">
+                <div className="align-center-text">
+                    <KeepAdd onAddKeep={this.addKeep} />
+                    <KeepList keeps={keepsToShow} onRemove={this.removeKeep} onStyleChange={this.styleChange} onCopy={this.copyKeep}/>
                 </div>
             </section>
         )

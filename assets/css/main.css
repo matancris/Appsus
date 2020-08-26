@@ -174,3 +174,7 @@ body {
 .hidden {
     display: none;
 }
+
+.align-center-text{
+    text-align: center;
+}

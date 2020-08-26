@@ -1,52 +1,28 @@
 
-// import React from 'react';
-// import { SketchPicker } from 'react-color';
-import { keepService } from '../../services/keep-service.js'
+
 
 export class KeepEdit extends React.Component {
     state = {
-        type: 'txt',
-        keep: keepService.getEmptyKeep()
-    }
-
-    componentDidMount() {
-    }
-
-    onInputChange = (ev) => {
-        const value = ev.target.value;
-        console.log(value);
-        this.setState({ keep: { ...this.state.keep, type: 'NoteTxt', info: { txt: value } } })
-    }
-
-    onStyleChange = (ev) => {
-        const value = ev.target.value;
-        this.setState({ keep: { ...this.state.keep, style: { backgroundColor: value } } })
-    }
-
-    addImg() {
-
-    }
-
-    addKeep = ()=>{
-        this.props.onAddKeep(this.state.keep)
     }
 
     render() {
-        const { keep } = this.state.keep
+        const {keep} = this.props;
         return (
-            <div className='keep-edit'>
+            <div className="keep-edit">
                 <div>
-                    <input type="add" placeholder="Add Keep:" onChange={this.onInputChange} />
-                    <button><i className="fas fa-font"></i></button>
-                    <input onChange={this.onStyleChange} type="color" id="shape-color"/>
-
-                    <button onClick={this.addImg}><i className="fas fa-image"></i></button>
-                    <button onClick={() => this.changeType('video')}><i className="fab fa-youtube"></i></button>
-                    <button onClick={() => this.changeType('todos')}><i className="fas fa-list-ul"></i></button>
-                    <button onClick={this.addKeep}><i className="fas fa-plus"></i></button>
-                    {/* <SketchPicker /> */}
+                <input onChange={(ev) => this.props.onStyleChange(keep.id, ev.target.value)} type="color" id="shape-color" />
+                <button ><i className="fas fa-thumbtack"></i></button>
+                <button onClick={() => this.props.onCopy(keep)}><i className="fas fa-clone"></i></button>
+                <button onClick={() => this.props.onRemove(keep.id)}><i className="fas fa-trash-alt"></i></button>
                 </div>
             </div>
         )
     }
 }
+
+
+{/* <input onChange={this.onStyleChange} type="color" id="shape-color" /> */ }
+    // onStyleChange = (ev) => {
+    //     const value = ev.target.value;
+    //     this.setState({ keep: { ...this.state.keep, style: { backgroundColor: value } } })
+    // }

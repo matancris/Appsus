@@ -1,5 +1,5 @@
 .keep-list {
-
+    flex-flow: wrap;
 }
 
 .keep-list>* {
@@ -13,3 +13,44 @@
     border-radius: 5px;
 }
 
+.keeps-container {}
+
+.keep-add-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.keep-add-container>* {
+    border: none;
+    background-color: transparent;
+    font-size: 1.1rem;
+    opacity: 0.5;
+    cursor: pointer;
+    outline: none;
+}
+
+.keep-add-container>*:hover{
+    opacity: 1;
+}
+
+.keep-add {
+    text-align: center;
+}
+
+.keep-edit {
+    display: none;
+}
+
+.keep-preview:hover .keep-edit {
+    display: block;
+}
+
+.full-opacity{
+    opacity: 1;
+}
