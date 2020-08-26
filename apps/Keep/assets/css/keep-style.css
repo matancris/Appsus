@@ -1,0 +1,15 @@
+.keep-list {
+
+}
+
+.keep-list>* {
+    margin: 5px;
+    flex-flow: wrap;
+}
+
+.keep-preview {
+    padding: 10px;
+    min-width: 200px;
+    border-radius: 5px;
+}
+
