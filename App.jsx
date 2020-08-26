@@ -6,18 +6,20 @@ import { MailApp } from './apps/Mail/MailApp.jsx'
 import { KeepApp } from './apps/Keep/KeepApp.jsx'
 import { NavBar } from './cmps/NavBar.jsx'
 import { AsideBar } from './cmps/AsideBar.jsx'
+import { MailDetails } from './apps/Mail/pages/MailDetails.jsx'
 export class App extends React.Component {
 
     render() {
         return (
             <Router>
-                <div class="container">
+                <div className="container">
                     <header >
                         <NavBar />
                     </header>
                     <main className="main flex">
                         {/* <AsideBar /> */}
                         <Switch>
+                            <Route component={MailDetails} path="/mail/:mailId"/>
                             <Route component={KeepApp} path="/keep" />
                             <Route component={MailApp} path="/mail" />
                             <Route component={Home} path="/" />
