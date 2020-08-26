@@ -1,9 +1,10 @@
 import { storageService } from '../../../service/storage-service.js'
+import { utilsService } from '../../../service/utils-service.js'
 
 
 export const mailService = {
     query,
-    addMail,
+    sendMail,
     updateReaden,
     removeMail,
     getMailById,
@@ -61,7 +62,17 @@ function getIdxById(mailId) {
         })
 }
 
-function addMail(newMail) {
+function sendMail(mail) {
+    const newMail = {
+        id: utilsService.makeId(),
+        from: 'Matan',
+        subject: mail.subject,
+        body: mail.body,
+        isRead: false,
+        sentAt: Date.now()
+    }
+
+    console.log(newMail);
     return query()
         .then(mails => {
             mails.push(newMail);
