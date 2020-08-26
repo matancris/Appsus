@@ -1,0 +1,52 @@
+.main-mail {
+    width: 100%;
+}
+
+/* mails-section */
+
+.mails-container, .mail-data-container {
+    width: 80%;
+    padding: 20px
+}
+
+.mail-preview {
+    border-bottom: 1px solid black;
+    position:relative;
+}
+
+.mail-preview div:not(:last-child){
+    width: 30%;
+}
+
+.mail-list, .mail-list li {
+    width: 100%;
+}
+
+.mail-list li > *{
+    text-decoration: none;
+}
+
+.readen {
+    background-color: #ccc;
+    font-weight: 400;
+}
+
+.mail-details{
+    width:100%;
+}
+
+
+.edit-mail{
+    position:absolute;
+    display:none;
+    background-color: #fff;
+    height: 100%;
+    width: 40%;
+}
+
+.mail-preview:hover .edit-mail{
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+right: 0;
+}
