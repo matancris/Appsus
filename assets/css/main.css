@@ -5,12 +5,37 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: Marck-script;
+    src: url(../font/MarckScript-Regular.ttf);
+}
+
+@font-face {
+    font-family: Pangolin;
+    src: url(../font/Pangolin-Regular.ttf);
+}
+
+@font-face {
+    font-family: Parisienne;
+    src: url(../font/Parisienne-Regular.ttf);
+}
+
+@font-face {
+    font-family: Dancing;
+    src: url(../font/DancingScript-Regular.ttf);
+}
+@font-face {
+    font-family: Cutiv-mono;
+    src: url(../font/CutiveMono-Regular.ttf);
+}
+
+
 html {
     height: 100vh;
 }
 
 body {
-    background-image: url(../img/537158-PJJ1A8-827.jpg);
+    background-image: url(../img/bgi.jpeg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -38,7 +63,8 @@ body {
 }
 
 .logo{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    font-family: Marck-script, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #0e9aa7;
     font-size: 2.5rem;
     font-style: italic;

@@ -8,7 +8,7 @@ function _NavBar(props) {
 
     return (
         <nav className="main-nav flex space-between">
-            <div className="logo">Appsus<span>.</span></div>
+            <div className="logo">AppSus<span></span></div>
             <div className="nav-links flex space-around">
             <NavLink exact to="/">Home </NavLink>
             <NavLink to="/keep">Keep </NavLink>
