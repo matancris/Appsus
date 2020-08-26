@@ -1,5 +1,4 @@
 @import '../../apps/Keep/assets/css/keep-style.css';
-
 @import '../../apps/Mail/assets/css/mail-style.css';
 * {
     box-sizing: border-box;
@@ -12,6 +11,27 @@ html {
 body {
     margin: 0;
     height: 100%;
+}
+
+/* HomePage  */
+.main-home{
+    width: 100%;
+}
+.logo-imgs {
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.logo-img {
+    width: 150px;
+    height: 150px;
+    margin: 50px;
+    /* position: absolute; */
+}
+
+.title-home {
+    text-align: center;
+    font-size: 4.5rem;
 }
 
 .container {

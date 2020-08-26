@@ -1,7 +1,7 @@
 
-import { keepService } from '../../services/keep-service.js'
 // import React from 'react';
 // import { SketchPicker } from 'react-color';
+import { keepService } from '../../services/keep-service.js'
 
 export class KeepEdit extends React.Component {
     state = {
@@ -44,6 +44,7 @@ export class KeepEdit extends React.Component {
                     <button onClick={() => this.changeType('video')}><i className="fab fa-youtube"></i></button>
                     <button onClick={() => this.changeType('todos')}><i className="fas fa-list-ul"></i></button>
                     <button onClick={this.addKeep}><i className="fas fa-plus"></i></button>
+                    {/* <SketchPicker /> */}
                 </div>
             </div>
         )
