@@ -11,10 +11,10 @@
 
 .mail-preview {
     border-bottom: 1px solid black;
-    position:relative;
+    position: relative;
 }
 
-.mail-preview div:not(:last-child){
+.mail-preview div:not(:last-child) {
     width: 30%;
 }
 
@@ -22,7 +22,7 @@
     width: 100%;
 }
 
-.mail-list li > *{
+.mail-list li>* {
     text-decoration: none;
 }
 
@@ -31,22 +31,123 @@
     font-weight: 400;
 }
 
-.mail-details{
-    width:100%;
+.mail-details {
+    width: 100%;
 }
 
-
-.edit-mail{
-    position:absolute;
-    display:none;
+.edit-mail {
+    position: absolute;
+    display: none;
     background-color: #fff;
     height: 100%;
     width: 40%;
 }
 
-.mail-preview:hover .edit-mail{
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-right: 0;
+.mail-preview:hover .edit-mail {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    right: 0;
+}
+
+.starred-btn{
+    color: gold;
+}
+
+/* COMPOSE SECTION */
+
+.compose-btn{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1rem;
+    background-color: #fff;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+    0 1px 3px 1px rgba(60, 64, 67, 0.149);
+}
+.compose-btn:hover{
+    font-weight: bold;
+    background-color: rgb(255, 235, 213);
+}
+
+.email-compose {
+    
+    background-color: white;
+    z-index: 6;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 80%;
+    box-shadow: -2px 3px 7px 0px #aba9a9;
+}
+
+
+
+.email-compose .compose-header {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #404040;
+    color: #f4f4f4;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.compose-header p {
+    margin-left: 1rem;
+}
+
+.compose-header button {
+    background-color: transparent;
+    color: #cccbcb;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.compose-header button:last-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compose-header button:hover {
+    background-color: rgba(129, 127, 127);
+    color: white;
+}
+
+.email-compose textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 1rem;
+    font-family: tahoma;
+}
+
+.email-compose input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    padding: 1rem;
+    width: 100%;
+    font-family: tahoma;
+}
+
+.compose-footer {
+    padding: 0.5rem;
+    background-color: #fff;
+}
+
+.compose-footer button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-inline-start: 1rem;
+    background-color: #1a73e8;
+    color: white;
+    cursor: pointer;
+}
+
+ .compose-footer button:hover {
+    background-color: #1a73e8e8;
 }
