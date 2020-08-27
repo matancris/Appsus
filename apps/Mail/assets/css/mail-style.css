@@ -1,5 +1,9 @@
+
 .main-mail {
     width: 100%;
+    background-image: url('../../../../assets/img/solid-bgi.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;  
 }
 
 button{
@@ -235,4 +239,8 @@ background-color: #ebebeb;
 
 .compose-footer button:hover {
     background-color: #0e9aa7;
+}
+
+.try {
+    fill: red
 }

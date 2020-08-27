@@ -9,18 +9,16 @@ export class Home extends React.Component {
                 <section className="logo-imgs justify-center flex">
                     <Link to={`/mail`}>
                         <div className="logo-container roll-in-blurred-left">  
-                            <img className="logo-img" src="../assets/img/mailLogo.svg" />
-                            {/* <i class="far fa-envelope logoi"></i> */}
+                            <img className="logo-img" src="./assets/img/mailLogo.svg" />
                         </div>
                     </Link>
                     <Link to={`/keep`}>
                     <div className="logo-container roll-in-top">
-                        <img className="logo-img" src="../assets/img/keepLogo.png" />
-                        {/* <i class="far fa-sticky-note logoi"></i> */}
+                        <img className="logo-img" src="./assets/img/keepLogo.png" />
                     </div>
                     </Link>
                     <div className="logo-container roll-in-right">
-                        <img className="logo-img" src="../assets/img/bookLogo.svg" />
+                        <img className="logo-img" src="./assets/img/bookLogo.svg" />
                     </div>
                 </section>
             </div>
