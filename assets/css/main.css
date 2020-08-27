@@ -128,6 +128,22 @@ body {
     font-size: 1.2rem;
 }
 
+.aside-main-nav .fa-inbox {
+    color: green;
+}
+
+.aside-main-nav .fa-star {
+    color: #ffbc00
+}
+
+.aside-main-nav .fa-share-square {
+    color: #020af8; 
+
+}
+.aside-main-nav .fa-firstdraft{
+    color: #dd0000
+}
+
 .aside-main-nav>* {
     display: flex;
     justify-content: space-evenly;
@@ -194,6 +210,6 @@ body {
     display: none;
 }
 
-.align-center-text{
+.align-center-text {
     text-align: center;
 }

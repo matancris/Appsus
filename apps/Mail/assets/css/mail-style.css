@@ -63,7 +63,7 @@ button{
 
 .fav-star-starred {
     padding-right: 15px;
-    color: gold
+    color: #ffbc00
 }
 
 .fav-star {
@@ -101,7 +101,23 @@ button{
     display: none;
     background-color: #fff;
     height: 100%;
-    width: 40%;
+    width: 24%;
+}
+
+.mail-preview.readen .edit-mail{
+background-color: #ebebeb;
+}
+
+.edit-mail > * {
+ border:none;
+ background-color: transparent;
+ font-size: 1.3rem;
+ cursor: pointer;
+
+ transition: 0.3s;
+}
+.edit-mail > *:hover {
+ opacity: 0.5;
 }
 
 .mail-preview:hover .edit-mail {
