@@ -15,25 +15,16 @@ export const mailService = {
 const MAILS_KEY = "mails";
 
 var gMails = [
-        { id: 'i101', type: 'income', address: 'Hilla', subject: 'Wassap?', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
-        { id: 'i102', type: 'income', address: 'Matan', subject: 'We are on fireee', body: 'Pick up!',isStarred: false, isRead: false, sentAt: 1551133930594 },
-        { id: 'i103', type: 'income', address: 'Yaron', subject: 'You are my hero', body: 'Pick up!',isStarred: false, isRead: false, sentAt: 1551133930594 },
-        { id: 'i104', type: 'income', address: 'Idan', subject: 'lets do it!', body: 'Pick up!',isStarred: false, isRead: false, sentAt: 1551133930594 },
-        { id: 'i105', type: 'income',  address: 'Hilla', subject: 'Wassap?', body: 'Pick up!',isStarred: false, isRead: false, sentAt: 1551133930594 },
-        { id: 's103', type: 'outcome',  address: 'Yaron@gmail.com', subject: 'You are my hero',isStarred: false, body: 'Pick up!', isRead: true, sentAt: 1551133930594 },
-        { id: 's104', type: 'outcome',  address: 'Idan@gmail.com', subject: 'lets do it!',isStarred: false, body: 'Pick up!', isRead: true, sentAt: 1551133930594 },
-        { id: 's105', type: 'outcome',  address: 'Hilla@gmail.com', subject: 'Wassap?',isStarred: false, body: 'Pick up!', isRead: true, sentAt: 1551133930594 }
-    ]
+    { id: 'i101', type: 'income', address: 'Hilla', subject: 'Wassap?', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
+    { id: 'i102', type: 'income', address: 'Matan', subject: 'We are on fireee', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
+    { id: 'i103', type: 'income', address: 'Yaron', subject: 'You are my hero', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
+    { id: 'i104', type: 'income', address: 'Idan', subject: 'lets do it!', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
+    { id: 'i105', type: 'income', address: 'Hilla', subject: 'Wassap?', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
+    { id: 's103', type: 'outcome', address: 'Yaron@gmail.com', subject: 'You are my hero', isStarred: false, body: 'Pick up!', isRead: true, sentAt: 1551133930594 },
+    { id: 's104', type: 'outcome', address: 'Idan@gmail.com', subject: 'lets do it!', isStarred: false, body: 'Pick up!', isRead: true, sentAt: 1551133930594 },
+    { id: 's105', type: 'outcome', address: 'Hilla@gmail.com', subject: 'Wassap?', isStarred: false, body: 'Pick up!', isRead: true, sentAt: 1551133930594 }
+]
 
-
-
-
-
-// var gSentMails = [
-//     { id: 's103', to: 'Yaron@gmail.com', subject: 'You are my hero', body: 'Pick up!', sentAt: 1551133930594 },
-//     { id: 's104', to: 'Idan@gmail.com', subject: 'lets do it!', body: 'Pick up!', sentAt: 1551133930594 },
-//     { id: 's105', to: 'Hilla@gmail.com', subject: 'Wassap?', body: 'Pick up!', sentAt: 1551133930594 }
-// ]
 
 function query() {
     let mails = storageService.loadFromStorage(MAILS_KEY);
@@ -48,7 +39,6 @@ function getMailById(mailId) {
     return query()
         .then(mails => {
             let mail = mails.find(mail => mail.id === mailId)
-            // if (!mail) mail = mails.outcomes.find(mail => mail.id === mailId)
             return Promise.resolve(mail);
         })
 }
@@ -67,16 +57,16 @@ function updateReaden(mail, isUnReadClick = true) {
 
 }
 
-function toggleStar(mail){
+function toggleStar(mail) {
     return getIdxById(mail.id)
-    .then((mailIdx) => query()
-        .then(mails => {
-            var currMail = mails[mailIdx]
-            currMail.isStarred = !currMail.isStarred;
-            console.log(mails);
-            storageService.saveToStorage(MAILS_KEY, mails)
-            return Promise.resolve()
-        }))
+        .then((mailIdx) => query()
+            .then(mails => {
+                var currMail = mails[mailIdx]
+                currMail.isStarred = !currMail.isStarred;
+                console.log(mails);
+                storageService.saveToStorage(MAILS_KEY, mails)
+                return Promise.resolve()
+            }))
 }
 
 function getIdxById(mailId) {
@@ -130,7 +120,6 @@ function removeMail(mailId) {
             return Promise.resolve();
         }
         )
-    // mails = mails.filter(mail => mail.id !== mailId)
 }
 
 
