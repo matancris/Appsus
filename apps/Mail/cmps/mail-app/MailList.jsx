@@ -1,5 +1,5 @@
 
-import { MailPreview } from 'MailPreview.jsx'
+import { MailPreview } from './Mailpreview.jsx'
 
 
 export function MailList({ mails, changeRead, removeMail, toggleStar }) {
