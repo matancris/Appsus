@@ -1,7 +1,10 @@
+
 export function NoteVideo(props) {
     return (
         <section>
-            <h1>NoteVideo</h1>
+            <iframe 
+                src={props['keep'].info.url}  >
+            </iframe>
         </section>
     )
 }

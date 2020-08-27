@@ -1,5 +1,6 @@
+
+
 export function NoteTodos(props) {
-  console.log(props['keep'].info.todos);
     return (
         <section>
             {props['keep'].info.todos.map((todo,idx) => {

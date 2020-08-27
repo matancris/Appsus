@@ -81,7 +81,7 @@ body {
 
 .main-nav {
     padding: 15px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #aeaeae;
 }
 
 .logo {
@@ -192,4 +192,8 @@ body {
 
 .hidden {
     display: none;
+}
+
+.align-center-text{
+    text-align: center;
 }

@@ -1,14 +1,15 @@
-import { AsideBar } from '../../cmps/AsideBar.jsx'
+// import { AsideBar } from '../../cmps/AsideBar.jsx'
 import { keepService } from './services/keep-service.js'
-import { KeepEdit } from './cmps/keep-app/KeepEdit.jsx'
+import { KeepAdd } from './cmps/keep-app/KeepAdd.jsx'
 import { KeepList } from './cmps/keep-app/KeepList.jsx'
-import { DynamicCmps } from './cmps/notes-app/DynamicCmps.jsx'
-
+import { KeepFilter } from './cmps/keep-app/KeepFilter.jsx'
+import { Modal } from './cmps/Modal.jsx'
 
 export class KeepApp extends React.Component {
     state = {
         keeps: [],
-        // filterBy: '',
+        filterBy: 'All',
+        selectedKeep: null
     }
 
     componentDidMount() {
@@ -18,30 +19,78 @@ export class KeepApp extends React.Component {
     loadKeeps() {
         keepService.query()
             .then(keeps => {
-                console.log(keeps);
                 this.setState({ keeps })
             })
     }
 
     addKeep = (keep) => {
-        keepService.save(keep).then(()=>{this.loadKeeps()})
+        if (!keep) return;
+        keepService.save(keep).then(() => { this.loadKeeps() })
     }
-    
-    removeKeep = (keepId) => {
-        console.log('on app remove');
-        console.log(keepId);
-        keepService.removeKeep(keepId).then(()=>{this.loadKeeps()})
+
+    removeKeep = (keepId,ev) => {
+        ev.stopPropagation();
+        keepService.removeKeep(keepId).then(() => { this.loadKeeps() })
+    }
+
+    styleChange = (keepId, color) => {
+        keepService.updateColor(keepId, color).then(() => { this.loadKeeps() })
+    }
+
+    copyKeep = (keep,ev) => {
+        ev.stopPropagation();
+        keepService.copyKeep(keep).then(() => { this.loadKeeps() })
+    }
+
+    keepPin = (keep,ev) => {
+        ev.stopPropagation();
+        keepService.keepPin(keep).then(() => { this.loadKeeps() })
+    }
+
+    setFilter = (type) => {
+        this.setState({ filterBy: type });
+        this.loadKeeps();
+    }
+
+
+    getKeepsForDisplay() {
+        let keeps = this.state.keeps.filter(keep => keep.isPinned === false);
+        if (this.state.filterBy === 'All') return keeps;
+        keeps = this.state.keeps.filter(keep => keep.type === this.state.filterBy)
+        return keeps;
+    }
+
+    getKeepsPins() {
+        const keepsPin = this.state.keeps.filter(keep => keep.isPinned === true)
+        return keepsPin;
+    }
+
+    editKeep = (keep) => {
+        console.log(keep);
+        this.setState({ selectedKeep: keep })
+    }
+
+    unSelectedKeep = () => {
+        this.setState({ selectedKeep: null })
     }
 
     render() {
-        const keepsToShow = this.state.keeps;
+        const keepsToShow = this.getKeepsForDisplay();
+        const pinKeeps = this.getKeepsPins();
+        const { selectedKeep } = this.state;
         return (
-            <section className="keep-app flex">
-                <AsideBar />
-                <div>
-                    <h2>Keep App</h2>
-                    <KeepEdit onAddKeep={this.addKeep} />
-                    <KeepList keeps={keepsToShow} onRemove={this.removeKeep}/>
+            <section className="keep-app">
+                <div className="align-center-text">
+                    <KeepFilter onSetFilter={this.setFilter} />
+                    <KeepAdd onAddKeep={this.addKeep} />
+                    <KeepList ispins={true} keeps={pinKeeps} onRemove={this.removeKeep} onStyleChange={this.styleChange}
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />
+                    <hr />
+
+                    <KeepList ispins={false} keeps={keepsToShow} onRemove={this.removeKeep} onStyleChange={this.styleChange}
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />
+                    {selectedKeep && <Modal unSelectedKeep = {this.unSelectedKeep} selectedKeep={selectedKeep} ispins={false} onRemove={this.removeKeep} onStyleChange={this.styleChange}
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />}
                 </div>
             </section>
         )

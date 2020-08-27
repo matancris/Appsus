@@ -1,52 +1,60 @@
 
-// import React from 'react';
-// import { SketchPicker } from 'react-color';
-import { keepService } from '../../services/keep-service.js'
+import { Color } from '../Color.jsx'
+import { KeepAdd } from './KeepAdd.jsx'
 
 export class KeepEdit extends React.Component {
     state = {
-        type: 'txt',
-        keep: keepService.getEmptyKeep()
+        colorsIsShown: false,
+        isEdit: false
     }
-
     componentDidMount() {
+        this.setState({ colorsIsShown: false })
     }
 
-    onInputChange = (ev) => {
-        const value = ev.target.value;
-        console.log(value);
-        this.setState({ keep: { ...this.state.keep, type: 'NoteTxt', info: { txt: value } } })
+    openColor = (ev) => {
+        ev.stopPropagation();
+        this.setState({ colorsIsShown: !this.state.colorsIsShown })
     }
 
-    onStyleChange = (ev) => {
-        const value = ev.target.value;
-        this.setState({ keep: { ...this.state.keep, style: { backgroundColor: value } } })
+    closeColor = () => {
+        this.setState({ colorsIsShown: false })
     }
 
-    addImg() {
 
+    openEdit(ev) {
+        ev.stopPropagation();
+        this.setState({ isEdit: true })
     }
 
-    addKeep = ()=>{
-        this.props.onAddKeep(this.state.keep)
+    typeButton = (keep) => {
+        switch (keep.type) {
+            case 'NoteTxt': {
+                return (<button onClick={(ev) => this.openEdit(ev)}><i className="fas fa-font"></i></button>)
+            }
+            case 'NoteVideo': {
+                return (<button><i className="fab fa-youtube"></i></button>)
+            }
+            case 'NoteImg': {
+                return (<button><i className="fas fa-image"></i></button>)
+            }
+            case 'NoteTodos': {
+                return (<button><i className="fas fa-list-ul"></i></button>)
+            }
+        }
     }
 
     render() {
-        const { keep } = this.state.keep
+        const { keep } = this.props;
         return (
-            <div className='keep-edit'>
-                <div>
-                    <input type="add" placeholder="Add Keep:" onChange={this.onInputChange} />
-                    <button><i className="fas fa-font"></i></button>
-                    <input onChange={this.onStyleChange} type="color" id="shape-color"/>
-
-                    <button onClick={this.addImg}><i className="fas fa-image"></i></button>
-                    <button onClick={() => this.changeType('video')}><i className="fab fa-youtube"></i></button>
-                    <button onClick={() => this.changeType('todos')}><i className="fas fa-list-ul"></i></button>
-                    <button onClick={this.addKeep}><i className="fas fa-plus"></i></button>
-                    {/* <SketchPicker /> */}
+                <div className="keep-edit">
+                    {this.typeButton(keep)}
+                    <button onClick={this.openColor}><i className="fas fa-palette"></i></button>
+                    {this.state.colorsIsShown && <Color keep={keep} closeColors={this.closeColor} onStyleChange={this.props.onStyleChange} />}
+                    <button onClick={(ev) => this.props.onPin(keep.id, ev)}><i className="fas fa-thumbtack"></i></button>
+                    <button onClick={(ev) => this.props.onCopy(keep, ev)}><i className="fas fa-clone"></i></button>
+                    <button onClick={(ev) => this.props.onRemove(keep.id, ev)}><i className="fas fa-trash-alt"></i></button>
                 </div>
-            </div>
         )
     }
 }
+
