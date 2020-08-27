@@ -18,7 +18,7 @@ export class Modal extends React.Component {
         return (
             <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
                 <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
-                    <button onClick={this.closeModal}>X</button>
+                    {/* <button onClick={this.closeModal}>X</button> */}
                     <KeepPreview keep={selectedKeep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
                         onCopy={this.props.onCopy} onPin={this.props.onPin} />
                      <Edit keep={selectedKeep} />

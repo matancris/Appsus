@@ -1,5 +1,7 @@
 @import '../../apps/Keep/assets/css/keep-style.css';
 @import '../../apps/Mail/assets/css/mail-style.css';
+@import './animation.css';
+
 * {
     box-sizing: border-box;
 }
@@ -59,7 +61,10 @@ body {
     margin: 50px;
     /* position: absolute; */
 }
-
+.logo-gif{
+    width: 50px;
+    height: 50px;
+}
 .title-home {
     text-align: center;
     font-size: 4.5rem;
