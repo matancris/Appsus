@@ -79,7 +79,7 @@ export class KeepApp extends React.Component {
         const pinKeeps = this.getKeepsPins();
         const { selectedKeep } = this.state;
         return (
-            <section className="keep-app">
+            <section className="keep-app scale-in-hor-right">
                 <div className="align-center-text">
                     <KeepFilter onSetFilter={this.setFilter} />
                     <KeepAdd onAddKeep={this.addKeep} />

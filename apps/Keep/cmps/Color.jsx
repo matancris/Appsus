@@ -2,7 +2,6 @@
 export class Color extends React.Component {
 
     onChangeColor = (color,ev) => {
-        // console.log(ev);
         ev.stopPropagation();
         this.props.closeColors();
         this.props.onStyleChange(this.props.keep.id, color)
@@ -13,14 +12,14 @@ export class Color extends React.Component {
         const { keep } = this.props
         return (
             <div className="colors-container">
-                <span onClick={(ev) => this.onChangeColor('#fffcab', ev)} style={{ backgroundColor: "#fffcab" }}></span>
-                <span onClick={(ev) => this.onChangeColor('rgb(255, 136, 136)', ev)} style={{ backgroundColor: "rgb(255, 136, 136)" }}></span>
-                <span onClick={(ev) => this.onChangeColor('#c0ffb3', ev)} style={{ backgroundColor: "#c0ffb3" }}></span>
-                <span onClick={(ev) => this.onChangeColor('rgb(136, 255, 225)', ev)} style={{ backgroundColor: "rgb(136, 255, 225)" }}></span>
-                <span onClick={(ev) => this.onChangeColor('#ffc1fa', ev)} style={{ backgroundColor: "#ffc1fa" }}></span>
-                <span onClick={(ev) => this.onChangeColor('rgb(52, 82, 255)', ev)} style={{ backgroundColor: "rgb(52, 82, 255)" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#fff1ac', ev)} style={{ backgroundColor: "#fff1ac" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#f2a6a6', ev)} style={{ backgroundColor: "#f2a6a6" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#e0f5b9', ev)} style={{ backgroundColor: "#e0f5b9" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#d3f6f3', ev)} style={{ backgroundColor: "#d3f6f3" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#ffbbcc', ev)} style={{ backgroundColor: "#ffbbcc" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#a6e3e9', ev)} style={{ backgroundColor: "#a6e3e9" }}></span>
                 <span onClick={(ev) => this.onChangeColor('rgb(136, 207, 255)', ev)} style={{ backgroundColor: "rgb(136, 207, 255)" }}></span>
-                <span onClick={(ev) => this.onChangeColor('#b590ca', ev)} style={{ backgroundColor: "#b590ca" }}></span>
+                <span onClick={(ev) => this.onChangeColor('#e1ccec', ev)} style={{ backgroundColor: "#e1ccec" }}></span>
             </div>
 
         )

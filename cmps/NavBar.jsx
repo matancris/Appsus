@@ -16,6 +16,7 @@ function _NavBar(props) {
             <NavLink exact to="/">Home </NavLink>
             <NavLink to="/keep">Keep </NavLink>
             <NavLink to="/mail">Mail </NavLink>
+            <NavLink to="/book">Books </NavLink>
             {/* <NavLink to="/book">Books </NavLink> */}
             {/* <button className= "btn-back" onClick={ goBack }>Back</button> */}
             </div>

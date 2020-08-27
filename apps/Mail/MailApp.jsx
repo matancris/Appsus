@@ -71,7 +71,7 @@ export class MailApp extends React.Component {
         const mails = this.mailsToShow()
         if (!mails) return <h2> loading...</h2>
         return (
-            <section className="main-mail flex">
+            <section className="main-mail scale-in-hor-right flex">
                 <AsideBar openCompose={this.openCompose}/>
                     
                 <div className="mails-container">
