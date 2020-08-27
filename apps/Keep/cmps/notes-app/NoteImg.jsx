@@ -2,7 +2,7 @@
 
 export function NoteImg(props) {
     return (
-        <section>
+        <section className="img-container">
             <img src={props['keep'].info.url} />
         </section>
     )

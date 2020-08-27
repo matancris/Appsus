@@ -7,7 +7,7 @@ import { NoteMap } from "../notes-app/NoteMap.jsx"
 import { NoteTodos } from "../notes-app/NoteTodos.jsx"
 import { NoteTxt } from "../notes-app/NoteTxt.jsx"
 
-import {KeepEdit} from "./KeepEdit.jsx"
+import { KeepEdit } from "./KeepEdit.jsx"
 
 
 export class KeepPreview extends React.Component {
@@ -24,13 +24,19 @@ export class KeepPreview extends React.Component {
         NoteTxt: NoteTxt
     }
 
+    onEditKeep = (ev, keep) => {
+        ev.stopPropagation();
+        this.props.onEditKeep(keep);
+    }
+
     render() {
         const { keep } = this.props
         const DynamicCmp = this.cmpMap[keep.type];
         return (
-            <article style={keep.style} className="keep-preview">
-               <DynamicCmp keep={keep}/>
-               <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange} onCopy={this.props.onCopy}/>
+            <article onClick={(ev) => this.onEditKeep(ev, keep)} style={keep.style} className={`keep-preview ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
+                <DynamicCmp keep={keep} />
+                <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
+                    onCopy={this.props.onCopy} onPin={this.props.onPin} />
             </article>
         )
     }

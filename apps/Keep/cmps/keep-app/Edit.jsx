@@ -1,17 +1,19 @@
 
 import { keepService } from '../../services/keep-service.js'
 
-export class KeepAdd extends React.Component {
+export class Edit extends React.Component {
     state = {
         value: '',
-        keep: keepService.getEmptyKeep()
+        keep: null
     }
 
     componentDidMount() {
+        this.setState({ keep: this.props.keep , value: this.getPlaceHolder(this.props.keep.type)})
 
     }
 
     onInputChange = (ev) => {
+        ev.stopPropagation();
         const value = ev.target.value;
         const type = this.state.keep.type;
         this.setState({ value })
@@ -67,18 +69,19 @@ export class KeepAdd extends React.Component {
     }
 
     getPlaceHolder(type) {
+        if(!this.state.keep) return;
         switch (type) {
             case 'NoteTxt': {
-                return 'Whats in your mind...'
+                return `${this.state.keep.info.txt}`
             }
             case 'NoteImg': {
-                return 'Enter img URL...'
+                return `${this.state.keep.info.url}`
             }
             case 'NoteVideo': {
-                return 'Enter video URL...'
+                return `${this.state.keep.info.url}`
             }
             case 'NoteTodos': {
-                return 'Enter cooma seprated list...'
+                return `${this.state.keep.info.todos}`
             }
         }
     }
@@ -86,19 +89,10 @@ export class KeepAdd extends React.Component {
 
 
     render() {
-        const { keep } = this.state.keep
+        if(!this.state.keep) return <h1>'loading...'</h1>
         return (
-            <div >
-                <div className='keep-add'>
-                    <div className="keep-add-container">
-                        <input type="search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
-                        <button onClick={this.onTextChoose}><i className="fas fa-font"></i></button>
-                        <button onClick={this.onImgChoose}><i className="fas fa-image"></i></button>
-                        <button onClick={this.onVideoChoose}><i className="fab fa-youtube"></i></button>
-                        <button onClick={this.onTodosChoose}><i className="fas fa-list-ul"></i></button>
-                        <button onClick={this.addKeep}><i className="fas fa-plus"></i></button>
-                    </div>
-                </div>
+            <div className="">
+                <input type="text" value={this.state.value} placeholder={this.getPlaceHolder(this.props.keep.type)} onChange={this.onInputChange} />
             </div>
         )
     }

@@ -16,7 +16,7 @@ export class App extends React.Component {
                     <header >
                         <NavBar />
                     </header>
-                    <main className="main flex justify-center align-center-text">
+                    <main className="main flex justify-center">
                         {/* <AsideBar /> */}
                         <Switch>
                             <Route component={MailDetails} path="/mail/:mailId"/>

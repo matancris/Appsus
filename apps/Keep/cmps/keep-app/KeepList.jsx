@@ -4,12 +4,12 @@ import { KeepPreview } from 'KeepPreview.jsx'
 export function KeepList(props) {
     return (
         <section>
-            <div className="keep-list flex">
+
+            <div className={`keep-list ${props.ispins ? 'keeps-pin' : ''} `}>
                 {
                     props.keeps.map(keep =>
-                        <div key={keep.id}>
-                            <KeepPreview keep={keep} onRemove={props.onRemove} onStyleChange={props.onStyleChange} onCopy={props.onCopy}/>
-                        </div>
+                        <KeepPreview key={keep.id} keep={keep} onRemove={props.onRemove} onStyleChange={props.onStyleChange}
+                            onCopy={props.onCopy} onPin={props.onPin} onEditKeep={props.onEditKeep} />
                     )
                 }
             </div>

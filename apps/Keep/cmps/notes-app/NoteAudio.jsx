@@ -3,7 +3,7 @@
 
 export function NoteAudio(props) {
     return (
-    <section>
+    <section className="img-container">
         <h1>NoteAudio</h1>
     </section>
     )
