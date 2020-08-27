@@ -4,7 +4,7 @@ export class MailCompose extends React.Component {
 
     state = {
         newMail: {
-            to: '',
+            address: '',
             subject: '',
             body: ''
         }
@@ -19,6 +19,7 @@ export class MailCompose extends React.Component {
 
     onInputChange = (ev) => {
         console.log(this.newMail);
+        console.log(ev.target.name);
         this.setState({ newMail: { ...this.state.newMail, [ev.target.name]: ev.target.value } })
     }
 
@@ -27,11 +28,10 @@ export class MailCompose extends React.Component {
         this.props.onSubmitCompose(this.state.newMail)
     }
 
-
     render() {
 
         return (
-            <div className="email-compose flex column space-between" >
+            <div className="mail-compose flex column space-between" >
                 <div className="compose-header flex space-between align-center">
                     <p> New Message </p>
                     <div className="header-controls flex">
@@ -40,8 +40,8 @@ export class MailCompose extends React.Component {
                 </div>
                 <form onSubmit={this.onSubmitCompose} className="flex column space-between flex-1">
                     {/* <section className="flex column space-between flex-1"> */}
-                    <div className="compose-to">
-                        <input type="email" name="to" placeholder="To" />
+                    <div className="compose-address">
+                        <input type="mail" name="address" placeholder="to" onChange={this.onInputChange} />
                     </div>
                     <div className="compose-subject">
                         <input ref={this.elInput} type="text" name="subject" placeholder="Subject" onChange={this.onInputChange} />
