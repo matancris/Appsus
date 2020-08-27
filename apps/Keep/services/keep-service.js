@@ -27,7 +27,7 @@ var gKeeps = [
             txt: "Fullstack Me Baby!"
         },
         style: {
-            backgroundColor: '#d7aefb'
+            backgroundColor: '#ffd5e5'
         }
     },
     {
@@ -39,7 +39,7 @@ var gKeeps = [
             title: "Me playing Mi"
         },
         style: {
-            backgroundColor: "#fbaee8"
+            backgroundColor: "#fcf7bb"
         }
     },
     {
@@ -54,7 +54,7 @@ var gKeeps = [
             ]
         },
         style: {
-            backgroundColor: '#b1fbae'
+            backgroundColor: '#d6e5fa'
         }
     },
     {
@@ -66,7 +66,7 @@ var gKeeps = [
             // title: "Me playing Mi"
         },
         style: {
-            backgroundColor: 'rgb(52, 82, 255)'
+            backgroundColor: '#e1ccec'
         }
     },
     {
@@ -79,7 +79,7 @@ var gKeeps = [
             title: "Me playing Mi"
         },
         style: {
-            backgroundColor: 'rgb(109, 60, 186)'
+            backgroundColor: '#d3f6f3'
         }
     },
     {
@@ -91,7 +91,7 @@ var gKeeps = [
             // title: "Me playing Mi"
         },
         style: {
-            backgroundColor: 'rgb(255, 253, 136)'
+            backgroundColor: '#ececec'
         }
     },
 ];

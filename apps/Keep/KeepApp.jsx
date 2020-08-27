@@ -81,8 +81,8 @@ export class KeepApp extends React.Component {
         return (
             <section className="keep-app scale-in-hor-right">
                 <div className="align-center-text">
-                    <KeepFilter onSetFilter={this.setFilter} />
                     <KeepAdd onAddKeep={this.addKeep} />
+                    <KeepFilter onSetFilter={this.setFilter} />
                     <KeepList ispins={true} keeps={pinKeeps} onRemove={this.removeKeep} onStyleChange={this.styleChange}
                         onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />
                     <hr />

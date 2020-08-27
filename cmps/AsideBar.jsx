@@ -7,16 +7,16 @@ export function AsideBar(props) {
             <div className="aside-bar-content flex column space-evenely">
                 <button className="compose-btn" onClick={() => props.openCompose()}><img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" />Compose</button>
                 <section className="aside-main-nav flex column space-between align-center ">
-                    <div className="inbox">
+                    <div className="inbox" onClick={() => props.onInbox()}>
                         <span> <i className="fas fa-inbox"></i> </span>
                     Inbox
                     {/* <span className="unread-display"> {{ unreadEmailsAmount }} </span> */}
                     </div>
-                    <div className="starred">
+                    <div className="starred" onClick={() => props.onStarred()}>
                         <span> <i className="fas fa-star"></i> </span>
                     Starred
-                </div>
-                    <div className="sent">
+                </div> 
+                    <div className="sent" onClick={() => props.onSent()}>
                         <span> <i className="fas fa-share-square"></i> </span>
                     Sent
                 </div>
