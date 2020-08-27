@@ -195,3 +195,18 @@ video {
   margin-top: 5px;
   font-size: 1.2rem;
 }
+
+.img-btn {
+  color: #020af8;
+}
+
+.add-btn {
+  color: green;
+}
+
+.video-btn {
+  color: #dd0000;
+}
+.todo-btn {
+  color: #ffbc00;
+}

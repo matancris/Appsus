@@ -92,11 +92,11 @@ export class KeepAdd extends React.Component {
                 <div className='keep-add'>
                     <div className="keep-add-container">
                         <input type="search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
-                        <button onClick={this.onTextChoose}><i className="fas fa-font"></i></button>
-                        <button onClick={this.onImgChoose}><i className="fas fa-image"></i></button>
-                        <button onClick={this.onVideoChoose}><i className="fab fa-youtube"></i></button>
-                        <button onClick={this.onTodosChoose}><i className="fas fa-list-ul"></i></button>
-                        <button onClick={this.addKeep}><i className="fas fa-plus"></i></button>
+                        <button onClick={this.onTextChoose}><i className="fas fa-font text-btn"></i></button>
+                        <button onClick={this.onImgChoose}><i className="fas fa-image img-btn"></i></button>
+                        <button onClick={this.onVideoChoose}><i className="fab fa-youtube video-btn"></i></button>
+                        <button onClick={this.onTodosChoose}><i className="fas fa-list-ul todo-btn"></i></button>
+                        <button onClick={this.addKeep}><i className="fas fa-plus add-btn"></i></button>
                     </div>
                 </div>
             </div>
