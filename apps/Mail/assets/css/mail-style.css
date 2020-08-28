@@ -295,7 +295,7 @@ button {
     font-size: 1.3rem;
 }
 
-.mail-data-container button {
+.mail-data-container button, .mail-data-container a{
     font-size: 1rem;
     border: none;
     background-color: #fff;
@@ -304,11 +304,12 @@ button {
     border-radius: 5px;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
     margin-left: 10px;
+    text-decoration: none;
 
     transition: 0.3s;
 }
 
-.mail-data-container button:hover {
+.mail-data-container button:hover, .mail-data-container a:hover {
     color: black;
     opacity: 0.7;
     background-color: #efe9e996;
