@@ -6,6 +6,8 @@ import { MailApp } from './apps/Mail/MailApp.jsx'
 import { KeepApp } from './apps/Keep/KeepApp.jsx'
 import { NavBar } from './cmps/NavBar.jsx'
 import { MailDetails } from './apps/Mail/pages/MailDetails.jsx'
+import { KeepDetails } from './apps/Keep/cmps/keep-app/KeepDetails.jsx'
+
 
 export class App extends React.Component {
     render() {
@@ -18,13 +20,13 @@ export class App extends React.Component {
                     <main className="main flex justify-center">
                         {/* <AsideBar /> */}
                         <Switch>
-                            <Route component={MailDetails} path="/mail/:mailId"/>
+                            <Route component={KeepDetails} path="/keep/details?" />
+                            <Route component={MailDetails} path="/mail/:mailId" />
                             <Route component={KeepApp} path="/keep" />
                             <Route component={MailApp} path="/mail" />
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>
-
                 </div>
             </Router>
         )

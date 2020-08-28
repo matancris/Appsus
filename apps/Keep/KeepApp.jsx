@@ -4,6 +4,7 @@ import { KeepAdd } from './cmps/keep-app/KeepAdd.jsx'
 import { KeepList } from './cmps/keep-app/KeepList.jsx'
 import { KeepFilter } from './cmps/keep-app/KeepFilter.jsx'
 import { Modal } from './cmps/Modal.jsx'
+import eventBus from '../../service/event-bus-service.js'
 
 export class KeepApp extends React.Component {
     state = {
