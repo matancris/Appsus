@@ -2,15 +2,15 @@
 // const { NavLink, withRouter } = ReactRouterDOM
 
 export function AsideBar(props) {
+    console.log(props.unreadMailAmount);
     return (
-        <nav className="aside-bar flex column align-center">
+        <nav className={`${props.isMobileMenuOpen ? 'menu-open': ''} aside-bar flex column align-center`}>
             <div className="aside-bar-content flex column space-evenely">
                 <button className="compose-btn" onClick={() => props.openCompose()}><img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" />Compose</button>
                 <section className="aside-main-nav flex column space-between align-center ">
                     <div className="inbox" onClick={() => props.onInbox()}>
                         <span> <i className="fas fa-inbox"></i> </span>
-                    Inbox
-                    {/* <span className="unread-display"> {{ unreadEmailsAmount }} </span> */}
+                    Inbox({props.unreadMailAmount})
                     </div>
                     <div className="starred" onClick={() => props.onStarred()}>
                         <span> <i className="fas fa-star"></i> </span>
@@ -20,7 +20,7 @@ export function AsideBar(props) {
                         <span> <i className="fas fa-share-square"></i> </span>
                     Sent
                 </div>
-                    <div className="drafts" >
+                    <div className="drafts" onClick={() => props.onDrafts()} >
                         <span> <i className="fab fa-firstdraft"></i> </span>
                     Drafts
                 </div>

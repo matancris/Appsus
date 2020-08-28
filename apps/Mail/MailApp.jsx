@@ -13,7 +13,9 @@ export class MailApp extends React.Component {
         filterRatio: '',
         mails: [],
         mailsType: '',
-        isComposeShown: false
+        isComposeShown: false,
+        isMobileMenuOpen: false,
+        unreadMailAmount : ''
     }
 
 
@@ -26,7 +28,8 @@ export class MailApp extends React.Component {
         console.log('hi');
         mailService.query()
             .then((mails) => {
-                this.setState({ mails })
+                this.setUnreadAmount()
+                this.setState({ mails})
             })
     }
 
@@ -46,6 +49,14 @@ export class MailApp extends React.Component {
             })
     }
 
+    setUnreadAmount = () => {
+        mailService.countUnreadMails()
+        .then(counter =>{
+            console.log(counter);
+            this.setState({unreadMailAmount: counter})
+        } )
+    }
+
     setFilter = (ev) => {
         if (ev.target.type === 'search') this.setState({ filterBy: ev.target.value })
         else if (ev.target.type === 'radio') this.setState({ filterRatio: ev.target.value })
@@ -59,6 +70,21 @@ export class MailApp extends React.Component {
     closeCompose = () => {
         this.setState({ isComposeShown: false })
     }
+
+    sendToDrafts = (draft) => {
+        console.log(draft);
+        if (!draft.address && !draft.subject && !draft.body) {
+            this.closeCompose();
+            return
+        }
+        mailService.sendToDrafts(draft)
+            .then(() => {
+                this.closeCompose()
+                this.loadMails()
+            })
+    }
+
+
 
     submitCompose = (newMail) => {
         mailService.sendMail(newMail)
@@ -79,14 +105,19 @@ export class MailApp extends React.Component {
 
     openStarred = () => {
         mailService.query()
-            .then((mails) => {
-                console.log("MailApp -> openStarred -> mails", mails)
-                this.setState({ mailsType: 'starred' })
-            })
+            .then(() => this.setState({ mailsType: 'starred' }))
     }
 
     openInbox = () => {
         this.setState({ mailsType: 'income' })
+    }
+
+    openDrafts = () => {
+        this.setState({ mailsType: 'draft' })
+    }
+
+    toggleMobileMenu = () => {
+        this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen })
     }
 
     mailsToShow() {
@@ -108,13 +139,13 @@ export class MailApp extends React.Component {
         const mails = this.mailsToShow()
         if (!mails) return <h2> loading...</h2>
         return (
-                    
             <section className="main-mail scale-in-hor-right flex">
-                <AsideBar openCompose={this.openCompose} onSent={this.openOutcomes} onInbox={this.openInbox} onStarred={this.openStarred} />
+                {this.state.isMobileMenuOpen && <div className="screen" onClick={this.toggleMobileMenu}></div>}
+                <AsideBar openCompose={this.openCompose} onSent={this.openOutcomes} onInbox={this.openInbox} onStarred={this.openStarred} isMobileMenuOpen={this.state.isMobileMenuOpen} onDrafts={this.openDrafts} unreadMailAmount={this.state.unreadMailAmount}/>
                 <div className="mails-container">
-                    <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} />
+                    <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} onOpenMobileMenu={this.toggleMobileMenu} />
                     <MailList mails={mails} changeRead={this.changeRead} removeMail={this.removeMail} toggleStar={this.toggleStar} />
-                    {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} />}
+                    {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} onSendToDrafts={this.sendToDrafts} />}
                 </div>
             </section>
         )

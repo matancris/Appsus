@@ -1,7 +1,6 @@
 
 import { storageService } from "../../../service/storage-service.js"
 import { utilsService } from "../../../service/utils-service.js"
-import { func } from "prop-types";
 
 const KEEP_KEY = 'keeps'
 

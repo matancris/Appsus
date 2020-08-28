@@ -35,7 +35,7 @@ export class MailCompose extends React.Component {
                 <div className="compose-header flex space-between align-center">
                     <p> New Message </p>
                     <div className="header-controls flex">
-                        <button onClick={() => this.props.onCloseCompose()}> <i className="fas fa-times"></i> </button>
+                        <button  title="save to drafts" onClick={() => this.props.onSendToDrafts(this.state.newMail)}> <i className="fas fa-times"></i> </button>
                     </div>
                 </div>
                 <form onSubmit={this.onSubmitCompose} className="flex column space-between flex-1">
@@ -52,8 +52,8 @@ export class MailCompose extends React.Component {
                     </div>
                     {/* </section> */}
                     <section className="compose-footer flex space-between align-center">
-                        <button type="submit" title="Send" onClick={this.on}> Send </button>
-                        <button className="fas fa-trash"></button>
+                        <button type="submit" title="Send"> Send </button>
+                        <button className="fas fa-trash" onClick={() => this.props.onCloseCompose()}></button>
                     </section>
                 </form>
             </div>
