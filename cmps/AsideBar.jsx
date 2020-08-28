@@ -24,7 +24,7 @@ export function AsideBar(props) {
                         <span> <i className="fab fa-firstdraft"></i> </span>
                     Drafts
                 </div>
-                    <div className="deleted" >
+                    <div className="deleted" onClick={() => props.onTrash()}>
                         <span> <i className="fas fa-trash"></i> </span>
                     Trash
                 </div>

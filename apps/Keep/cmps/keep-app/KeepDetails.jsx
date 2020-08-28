@@ -19,6 +19,10 @@ export class KeepDetails extends React.Component {
     }
 
     componentDidMount() {
+        const mailToKeep = new URLSearchParams(window.location.href).get('mail');
+     if (mailToKeep) {
+        this.setState({ keep: this.props.keep })
+     }
         this.setState({ keep: this.props.keep })
         this.loadKeep();
     }

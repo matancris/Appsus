@@ -36,6 +36,11 @@ export class KeepEdit extends React.Component {
         if(this.props.removeOnDetails) this.props.removeOnDetails();
     }
 
+    onMailKeep = (keep, ev) =>{
+        ev.stopPropagation();
+
+    }
+
     typeButton = (keep) => {
         switch (keep.type) {
             case 'NoteTxt': {
@@ -65,6 +70,7 @@ export class KeepEdit extends React.Component {
                 <button onClick={(ev) => this.props.onPin(keep.id, ev)}><i className="fas fa-thumbtack"></i></button>
                 <button onClick={(ev) => this.props.onCopy(keep, ev)}><i className="fas fa-clone"></i></button>
                 <button onClick={(ev) => this.onRemove(keep.id, ev)}><i className="fas fa-trash-alt"></i></button>
+
             </div>
         )
     }

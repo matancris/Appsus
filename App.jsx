@@ -22,10 +22,10 @@ export class App extends React.Component {
                     <main className="main flex justify-center">
                         <Switch>
                             <Route component={MailDetails} path="/mail/:mailId" />
+                            <Route component={KeepApp} path="/keep/:mail?" />
+                            <Route component={MailApp} path="/mail/:keep?" />
                             <Route component={BookDetails} path="/book/:bookId" />
                             <Route component={BookApp} path="/book" />
-                            <Route component={KeepApp} path="/keep" />
-                            <Route component={MailApp} path="/mail" />
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>

@@ -27,6 +27,7 @@ export class Modal extends React.Component {
     render() {
         const { isShown } = this.state
         const { selectedKeep } = this.props
+        console.log("Modal -> render -> selectedKeep", selectedKeep)
         return (
             <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
                 <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>

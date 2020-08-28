@@ -92,6 +92,7 @@ export class Edit extends React.Component {
             <div className="">
                 <input type="text" value={this.state.value} placeholder={this.getPlaceHolder(this.props.keep.type)} onChange={this.onInputChange} />
                 <button onClick={this.saveChanges}>Save</button>
+                
             </div>
         )
     }

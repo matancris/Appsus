@@ -3,32 +3,6 @@
     src: url(../fonts/Luckiest/LuckiestGuy-Regular.ttf);
 }
 
-body {
-    margin: 0;
-    height: 100%
-    ;
-}
-
-a {
-    font-size: 1.2rem;
-    text-decoration-line: none;
-}
-
-.home-body {
-    margin: 0;
-    background-image: url(../img/bgc6.gif);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
-
-h1 {
-    text-align: center;
-}
-
-button {
-    outline: none;
-}
 
 .book-app {
     width: 100%;
@@ -200,9 +174,6 @@ button {
     align-items: center;
 }
 
-.main-nav {
-    margin-right: 100px;
-}
 
 .book-logo {
     margin-left: 100px;
@@ -311,31 +282,3 @@ button {
     background-color: rgb(199, 199, 199);
   }
   
-
-@keyframes slide-in-fwd-tr {
-    0% {
-        transform: translateZ(-1400px) translateY(-800px) translateX(1000px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateZ(0) translateY(0) translateX(0);
-        opacity: 1;
-    }
-}
-
-.slide-in-elliptic-right-bck {
-    animation: slide-in-elliptic-right-bck 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@keyframes slide-in-elliptic-right-bck {
-    0% {
-        transform: translateX(800px) rotateY(30deg) scale(6.5);
-        transform-origin: -100% 50%;
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0) rotateY(0) scale(1);
-        transform-origin: 600px 50%;
-        opacity: 1;
-    }
-}
