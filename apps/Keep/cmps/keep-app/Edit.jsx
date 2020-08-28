@@ -8,8 +8,7 @@ export class Edit extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ keep: this.props.keep , value: this.getPlaceHolder(this.props.keep.type)})
-
+        this.setState({ keep: this.props.keep, value: this.getPlaceHolder(this.props.keep.type) })
     }
 
     onInputChange = (ev) => {
@@ -69,7 +68,7 @@ export class Edit extends React.Component {
     }
 
     getPlaceHolder(type) {
-        if(!this.state.keep) return;
+        if (!this.state.keep) return;
         switch (type) {
             case 'NoteTxt': {
                 return `${this.state.keep.info.txt}`
@@ -87,12 +86,12 @@ export class Edit extends React.Component {
     }
 
 
-
     render() {
-        if(!this.state.keep) return <h1>'loading...'</h1>
+        if (!this.state.keep) return <h1>'loading...'</h1>
         return (
             <div className="">
                 <input type="text" value={this.state.value} placeholder={this.getPlaceHolder(this.props.keep.type)} onChange={this.onInputChange} />
+                <button onClick={this.saveChanges}>Save</button>
             </div>
         )
     }

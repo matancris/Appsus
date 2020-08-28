@@ -4,6 +4,8 @@ const { Route, Switch } = ReactRouterDOM
 import { Home } from './pages/Home.jsx'
 import { MailApp } from './apps/Mail/MailApp.jsx'
 import { KeepApp } from './apps/Keep/KeepApp.jsx'
+import { BookApp } from './apps/Books/BookApp.jsx'
+import { BookDetails } from './apps/Books/BookDetails.jsx'
 import { NavBar } from './cmps/NavBar.jsx'
 import { MailDetails } from './apps/Mail/pages/MailDetails.jsx'
 import { KeepDetails } from './apps/Keep/cmps/keep-app/KeepDetails.jsx'
@@ -18,10 +20,10 @@ export class App extends React.Component {
                         <NavBar />
                     </header>
                     <main className="main flex justify-center">
-                        {/* <AsideBar /> */}
                         <Switch>
-                            <Route component={KeepDetails} path="/keep/details?" />
                             <Route component={MailDetails} path="/mail/:mailId" />
+                            <Route component={BookDetails} path="/book/:bookId" />
+                            <Route component={BookApp} path="/book" />
                             <Route component={KeepApp} path="/keep" />
                             <Route component={MailApp} path="/mail" />
                             <Route component={Home} path="/" />
