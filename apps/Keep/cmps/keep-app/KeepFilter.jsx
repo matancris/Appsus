@@ -4,7 +4,6 @@ export class KeepFilter extends React.Component {
     }
 
     onChangeFilter = (type) => {
-        //   console.log(type);
         this.props.onSetFilter(type);
     }
 

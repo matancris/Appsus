@@ -12,8 +12,10 @@ import { KeepEdit } from "./KeepEdit.jsx"
 
 export class KeepPreview extends React.Component {
     state = {
-        // currType: 'NoteTxt'
+        isEdit: false
     }
+
+    componentDidMount() { }
 
     cmpMap = {
         NoteAudio: NoteAudio,
@@ -26,17 +28,23 @@ export class KeepPreview extends React.Component {
 
     onEditKeep = (ev, keep) => {
         ev.stopPropagation();
+        this.setState({ isEdit: true })
         this.props.onEditKeep(keep);
+
+    }
+
+    onUnEditKeep = () => {
+        this.setState({ isEdit: false })
     }
 
     render() {
         const { keep } = this.props
         const DynamicCmp = this.cmpMap[keep.type];
         return (
-            <article onClick={(ev) => this.onEditKeep(ev, keep)} style={keep.style} className={`keep-preview ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
-                <DynamicCmp keep={keep} />
+            <article onMouseOut={this.onUnEditKeep} onClick={(ev) => this.onEditKeep(ev, keep)} style={keep.style} className={`keep-preview ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
+                <DynamicCmp doneNote={false} keep={keep} />
                 <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
-                    onCopy={this.props.onCopy} onPin={this.props.onPin} />
+                    onCopy={this.props.onCopy} onPin={this.props.onPin} isEditOn={this.state.isEdit} isDetailsOn={false} />
             </article>
         )
     }

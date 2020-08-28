@@ -1,6 +1,7 @@
 @import '../../apps/Keep/assets/css/keep-style.css';
 @import '../../apps/Mail/assets/css/mail-style.css';
 @import './animation.css';
+@import '../../apps/Books/assets/css/book.css';
 
 * {
     box-sizing: border-box;

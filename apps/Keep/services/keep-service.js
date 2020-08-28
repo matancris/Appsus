@@ -15,7 +15,8 @@ export const keepService = {
     getEmptyKeep,
     updateColor,
     copyKeep,
-    keepPin
+    keepPin,
+    doneNote
 }
 
 var gKeeps = [
@@ -193,13 +194,21 @@ function copyKeep(copyKeep) {
 }
 
 function keepPin(keepId) {
-    console.log(keepId);
     return query()
         .then(keeps => {
             const _keep = keeps.find(keep => keep.id === keepId);
             _keep.isPinned = !_keep.isPinned;
-            console.log(_keep.isPinned);
             storageService.saveToStorage(KEEP_KEY, keeps);
             return Promise.resolve();
         })
+}
+
+function doneNote(keepId,keepTodoIdx){
+    return query()
+    .then(keeps => {
+        const keepIdx = keeps.findIndex(keep => keep.id === keepId)
+        keeps[keepIdx].info.todos[keepTodoIdx].doneAt = new Date();
+        storageService.saveToStorage(KEEP_KEY, keeps);
+        return Promise.resolve();
+    })
 }

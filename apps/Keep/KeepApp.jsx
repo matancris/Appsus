@@ -16,7 +16,7 @@ export class KeepApp extends React.Component {
         this.loadKeeps();
     }
 
-    loadKeeps() {
+    loadKeeps = () => {
         keepService.query()
             .then(keeps => {
                 this.setState({ keeps })
@@ -28,8 +28,11 @@ export class KeepApp extends React.Component {
         keepService.save(keep).then(() => { this.loadKeeps() })
     }
 
-    removeKeep = (keepId,ev) => {
-        ev.stopPropagation();
+    saveKeep = (keep) => {
+        keepService.save(keep).then(() => { this.loadKeeps() })
+    }
+
+    removeKeep = (keepId) => {
         keepService.removeKeep(keepId).then(() => { this.loadKeeps() })
     }
 
@@ -37,12 +40,12 @@ export class KeepApp extends React.Component {
         keepService.updateColor(keepId, color).then(() => { this.loadKeeps() })
     }
 
-    copyKeep = (keep,ev) => {
+    copyKeep = (keep, ev) => {
         ev.stopPropagation();
         keepService.copyKeep(keep).then(() => { this.loadKeeps() })
     }
 
-    keepPin = (keep,ev) => {
+    keepPin = (keep, ev) => {
         ev.stopPropagation();
         keepService.keepPin(keep).then(() => { this.loadKeeps() })
     }
@@ -66,7 +69,6 @@ export class KeepApp extends React.Component {
     }
 
     editKeep = (keep) => {
-        console.log(keep);
         this.setState({ selectedKeep: keep })
     }
 
@@ -74,57 +76,32 @@ export class KeepApp extends React.Component {
         this.setState({ selectedKeep: null })
     }
 
+    doneNote = (keep, todoIdx) => {
+        keepService.doneNote(keep.id, todoIdx).then(() => { this.loadKeeps() })
+    }
+
     render() {
         const keepsToShow = this.getKeepsForDisplay();
         const pinKeeps = this.getKeepsPins();
         const { selectedKeep } = this.state;
         return (
-            <section className="keep-app scale-in-hor-right">
-                <div className="align-center-text">
-                    <KeepAdd onAddKeep={this.addKeep} />
-                    <KeepFilter onSetFilter={this.setFilter} />
+            <section className="keep-app scale-in-hor-right align-center-text">
+                <KeepAdd isEdit={false} onAddKeep={this.addKeep} />
+                <KeepFilter onSetFilter={this.setFilter} />
+                <div>
+
                     <KeepList ispins={true} keeps={pinKeeps} onRemove={this.removeKeep} onStyleChange={this.styleChange}
-                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} doneNote={this.doneNote} />
                     <hr />
 
                     <KeepList ispins={false} keeps={keepsToShow} onRemove={this.removeKeep} onStyleChange={this.styleChange}
                         onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />
-                    {selectedKeep && <Modal unSelectedKeep = {this.unSelectedKeep} selectedKeep={selectedKeep} ispins={false} onRemove={this.removeKeep} onStyleChange={this.styleChange}
-                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />}
+
+                    {selectedKeep && <Modal unSelectedKeep={this.unSelectedKeep} selectedKeep={selectedKeep} ispins={false} onRemove={this.removeKeep} onStyleChange={this.styleChange}
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} onLoadKeep={this.loadKeeps}
+                        saveKeep={this.saveKeep} doneNote={this.doneNote} loadKeeps={this.loadKeeps} />}
                 </div>
             </section>
         )
     }
 }
-
-
-// onSetFilter = (filterBy) => {
-    //     this.setState({ filterBy });
-    //     this.loadBooks();
-    // }
-
-
-    // getKeepsForDisplay() {
-    //     const books = this.state.books.filter(book => book.title.toLowerCase().includes(this.state.filterBy.toLowerCase()))
-    //     return books;
-    // }
-
-    // onAddKeep = (newKeep) => {
-    //     bookService.addBook(newBook).then(() => this.loadBooks());
-    // }
-
-
-// render() {
-//     const booksToShow = this.getBooksForDisplay();
-//     return (
-//         <section className="book-app">
-//             <div className="books slide-in-elliptic-right-bck">
-//                 <BookFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
-//                 <AddBook addBook={this.onAddBook} />
-//                 <BookList books={booksToShow} />
-//             </div>
-//         </section>
-//     )
-// }
-// }
-
