@@ -119,7 +119,7 @@ svg {
 .logo {
     font-family: Marck-script, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #0e9aa7;
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     font-style: italic;
 }
 
@@ -279,6 +279,7 @@ svg {
 }
 
 /* NOTIFICATION */
+
 .notification-box {
     position: absolute;
     right: 60px;
@@ -302,6 +303,16 @@ svg {
 }
 
 /* MEDIA QUERY */
+
+@media (max-width: 870px){
+    .main-mail {
+        background-size: cover;
+    }
+
+    .mail-filter {
+        flex-direction: column;
+    }
+}
 
 @media (max-width: 620px) {
     html {
@@ -327,19 +338,32 @@ svg {
     .aside-bar.menu-open {
         transform: translateX(0);
     }
-    .main-mail {
-        background-size: cover;
-    }
+
     .mails-container, .mail-list, .mail-data-container {
         width: 100%;
         padding: 0;
     }
-    .mail-filter {
-        flex-direction: column;
-    }
+
     .mobile-menu-btn {
-        display: inline;
+    display: inline;
+    position: fixed;
+    font-size: 1.5rem;
+    box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.302), 4px 5px 8px 0px rgba(60, 64, 67, 0.149);
+    border: 1px solid white;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 8px 12px;
+    outline: none;
+
+    background-color: #5e5f5f; 
+    color: #fff;
+    left: 35px;
+    bottom: 65px;
+    z-index: 1; 
+    box-shadow: 0px 1px 3px 2px #4e4d4da1; 
     }
+
+    
     .sub-body-container {
         flex-direction: column;
         justify-content: center;
