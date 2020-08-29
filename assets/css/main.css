@@ -136,6 +136,7 @@ svg {
     font-size: 3rem;
     transition: .3s;
 }
+
 .nav-links a:hover{
     color: #373737;
 }
@@ -336,5 +337,12 @@ svg {
     }
     .mail-preview div:first-of-type {
         overflow: hidden;
+    }
+
+
+    /* BOOKS */
+
+    .search-add {
+        flex-direction: column;
     }
 }

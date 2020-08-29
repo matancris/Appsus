@@ -41,8 +41,10 @@ export class BookApp extends React.Component {
         return (
             <section className="book-app">
                 <div className="books scale-in-hor-right">
+                    <div className="search-add flex justify-center">
                     <BookFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />
                     <AddBook addBook={this.onAddBook} />
+                    </div>
                     <BookList books={booksToShow} />
                 </div>
             </section>

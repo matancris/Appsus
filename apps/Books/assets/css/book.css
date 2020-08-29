@@ -3,6 +3,13 @@
     src: url(../fonts/Luckiest/LuckiestGuy-Regular.ttf);
 }
 
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+a{
+    text-decoration: none;
+}
 
 .book-app .books{
     width: 100%;
@@ -14,21 +21,6 @@
 
 .book-filter {
     text-align: center;
-}
-
-/* .book-input-filter {
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color .5s;
-    width: 200px;
-}
-
-.book-input-filter:focus {
-    background-color: #ef646b;
-} */
-
-.books {
-    /* padding-top: 140px; */
 }
 
 .book-list {
@@ -43,18 +35,16 @@
 }
 
 .book-list li {
-    /* border: 3px rgb(29, 29, 29) solid; */
     text-align: center;
     width: 200px;
     height: 270px;
     margin-bottom: 10px;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    /* background-color: #c3c3c3; */
+    border-radius: 5px;
     color: rgb(255, 255, 255);
     transition: .5s;
     border: 1px solid rgb(189, 189, 189);
@@ -69,7 +59,6 @@
     height: 170px;
     border: black 2px solid;
     transition: .5s;
-    box-shadow: 10px -27px 25px -22px rgb(109, 109, 109);
 }
 
 .book-list img:hover {
@@ -95,14 +84,11 @@
     border-radius: 5px;
     text-align: center;
     display: flex;
-    /* padding-top: 150px; */
-    /* font-family: monospace; */
     margin-bottom: 10px;
 }
 
 .book-preview>* {
     margin: 5px;
-    /* flex: 0 0 50%; */
 }
 
 .book-data {
@@ -110,7 +96,7 @@
 }
 
 .read-link {
-    color: rgb(224, 64, 64);
+    color: #0e9aa7;
     cursor: pointer;
 }
 
@@ -128,7 +114,6 @@
 
 .book-header {
     font-size: 3rem;
-    font-family: Luckiest;
     position: absolute;
     z-index: 3;
     color: white;
@@ -141,7 +126,7 @@
 }
 
 .book-header a {
-    font-family: monospace;
+    text-decoration: none;
     color: rgb(134, 134, 134);
     font-size: 1.5rem;
 }
@@ -150,6 +135,21 @@
     font-size: 1.2rem;
     margin: 0;
     color: #113151;
+}
+
+.book-details-pager > *{
+    box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+    border-radius: 5px;
+    padding: 7px;
+    outline: none;
+    font-size: 1.5rem;
+    transition: 0.3s;
+    margin-left: 30px;
+    color: #535252;
+
+}
+.book-details-pager{
+    margin-top: 10px
 }
 
 .btn-back {
@@ -204,19 +204,15 @@
 .review-container {
     display: flex;
     flex-direction: column;
-    background: rgb(236, 236, 236);
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
-    width: 600px;
-    border: 2px solid #218dcb;
-    font-family: fantasy;
+    border: 2px solid #0e9aa7;
     margin-top: 50px;
 }
 
 .from-review {
     display: flex;
     flex-direction: column;
-    /* font-size: 0.2rem; */
     align-items: center;
 }
 
@@ -224,19 +220,23 @@
     font-size: 1.2rem;
     padding: 5px;
     margin: 5px;
-    border-radius: 5px;
     outline: none;
     transition: .3s;
 }
 
-.from-review>*:focus {
-    background-color: #ef646b;
-}
 
 .btn-add-review {
-    background-color: #ef646b;
-    border: none;
-    cursor: pointer;
+    box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+    border-radius: 5px;
+    padding: 7px;
+    outline: none;
+    font-size: 1.3rem;
+    transition: 0.3s;
+    margin-left: 30px;
+    color: #535252;
+    border:none;
+    background-color: none;
+   
 }
 
 .btn-add-review:hover {
@@ -266,7 +266,10 @@
     display: none;
 }
 
-.book-search , .book-input-filter{
+.book-search ,
+.book-input-filter,
+.full-name-review,
+.free-text-review{
     box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
     border: none;
     border-radius: 5px;
@@ -278,7 +281,10 @@
     margin-left: 30px;
   }
   
-  .book-search:focus, .book-input-filter:focus {
+  .book-search:focus,
+  .book-input-filter:focus ,
+  .full-name-review:focus,
+  .free-text-review:focus{
     background-color: rgb(199, 199, 199);
   }
   

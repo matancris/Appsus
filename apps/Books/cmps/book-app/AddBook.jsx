@@ -37,7 +37,7 @@ export class AddBook extends React.Component {
         const isShown = this.state.options.length === 0 ? false: true;
         return (
             <section className="add-book">  
-                <input className="book-search" type="search" value={this.state.name} placeholder="Book Name:" onChange={this.onInputChange} />
+                <input className="book-search" type="search" value={this.state.name} placeholder="Add Book" onChange={this.onInputChange} />
                 {isShown &&  <ModalSearch options={this.state.options} onAddBook={this.addBook} />}
                 </section>
         )

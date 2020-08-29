@@ -83,9 +83,9 @@ export class BookDetails extends React.Component {
                         <LongTxt text={book.description} />
                     </div>
                 </div>
-                <div>
-                    <Link to={`/book/${nextBookId}`}>Next</Link> |
-                    <Link to={`/book/${prevBookId}`}>Prev</Link>
+                <div className="book-details-pager">
+                    <Link to={`/book/${prevBookId}`}><i className="fas fa-arrow-left"></i>Prev</Link>
+                    <Link to={`/book/${nextBookId}`}>Next<i className="fas fa-arrow-right"></i></Link>
                 </div>
 
                 <div className="review">

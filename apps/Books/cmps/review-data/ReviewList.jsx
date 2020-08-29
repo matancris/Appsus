@@ -3,9 +3,6 @@ import { ReviewPreview } from 'ReviewPreview.jsx'
 
 export function ReviewList(props) {
 
-    function removeReview(){
-
-    }
 
     return (<section>
         <ul className="review-list">
@@ -13,7 +10,7 @@ export function ReviewList(props) {
                 props.reviews.map((review) =>
                     <li key={review.id}>
                         <ReviewPreview review={review} />
-                        <button onClick={() => props.remove(props.bookId,review.id)}>x</button>
+                        {/* <button onClick={() => props.remove(props.bookId,review.id)}>x</button> */}
                     </li>
                 )
             }

@@ -114,38 +114,7 @@ export class MailApp extends React.Component {
         const mailSection = new URLSearchParams(window.location.href).get('section')
         this.setState({ mailsType: mailSection })
     }
-
-
-    // changeMailSection = (section) => {
-    //     const mailSection = new URLSearchParams(window.location.href).get('section')
-    //     if (mailSection) {
-    //         console.log("MailApp -> componentDidMount -> mailSection", mailSection)
-    //         this.setState({ mailsType: mailSection })
-    //     // this.setState({mailsType: section})
-    //     }
-    // }
-
-    // changeMailSection = (section) => {
-    //     switch (section) {
-    //         case 'inbox':
-    //             this.setState({ mailsType: 'income' })
-    //             break;
-    //         case 'sent':
-    //             this.setState({ mailsType: 'outcome' })
-    //             break;
-    //         case 'starred':
-    //             this.setState({ mailsType: 'starred' })
-    //             break;
-    //         case 'drafts':
-    //             this.setState({ mailsType: 'draft' })
-    //             break;
-    //         case 'deleted':
-    //             this.setState({ mailsType: 'trash' })
-    //             break;
-
-    //     }
-    // }
-
+    
     toggleMobileMenu = () => {
         this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen })
     }

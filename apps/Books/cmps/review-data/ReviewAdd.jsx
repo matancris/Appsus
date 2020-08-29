@@ -24,7 +24,7 @@ export class ReviewAdd extends React.Component {
             <div className="review-container">
                 <label>Add Review:</label>
                 <form className="from-review" onSubmit={ this.addReview }>
-                    <input name="fullName" value={ this.state.reviewToAdd.fullName }
+                    <input className="full-name-review" name="fullName" value={ this.state.reviewToAdd.fullName }
                         placeholder="Full Name" type="text"
                         onChange={ this.onInputChange } />
 
@@ -37,8 +37,8 @@ export class ReviewAdd extends React.Component {
                             onChange={ this.onInputChange } />
                     </label>
 
-                    <input name="txt" value={ this.state.txt }
-                        placeholder="free text" type="text" value={ this.state.reviewToAdd.txt }
+                    <input className="free-text-review" name="txt" value={ this.state.txt }
+                        placeholder="Free text" type="text" value={ this.state.reviewToAdd.txt }
                         onChange={ this.onInputChange } />
                     <button className="btn-add-review">Add Review</button>
                 </form>

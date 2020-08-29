@@ -1,6 +1,6 @@
 
 
-import { storageService } from "./storage-service.js"
+import { storageService } from "../../../service/storage-service.js"
 
 export const bookService = {
     addBook,
