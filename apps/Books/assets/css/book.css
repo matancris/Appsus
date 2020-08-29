@@ -16,20 +16,7 @@
     text-align: center;
 }
 
-/* .book-input-filter {
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color .5s;
-    width: 200px;
-}
 
-.book-input-filter:focus {
-    background-color: #ef646b;
-} */
-
-.books {
-    /* padding-top: 140px; */
-}
 
 .book-list {
     list-style-type: none;
@@ -266,7 +253,7 @@
     display: none;
 }
 
-.book-search , .book-input-filter{
+.book-search , .book-input-filter {
     box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
     border: none;
     border-radius: 5px;
@@ -277,8 +264,17 @@
     transition: 0.3s;
     margin-left: 30px;
   }
-  
+
   .book-search:focus, .book-input-filter:focus {
     background-color: rgb(199, 199, 199);
   }
   
+.sale-title{
+    font-size: 3rem;
+    margin: 0;
+    color: rgb(194, 34, 34);
+}
+
+.currency-title{
+    margin: 0;
+}

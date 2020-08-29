@@ -269,15 +269,21 @@ svg {
     text-align: center;
 }
 
+.active {
+    color: rgb(65, 65, 65);
+}
+
+.active-nav {
+    color: rgb(195, 104, 0);
+}
+
+
 /* MEDIA QUERY */
 
 @media (max-width: 620px) {
     html {
         font-size: 14px;
     }
-
-    
-
     .main-nav {
         flex-direction: column;
         align-items: center;

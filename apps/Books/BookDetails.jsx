@@ -62,6 +62,22 @@ export class BookDetails extends React.Component {
         bookService.removeReview(bookId, reviewId)
     }
 
+    getCurrency(currency) {
+        switch (currency) {
+            case 'EUR': {
+                return '€'
+            }
+            case 'ILS': {
+                return '₪'
+            }
+            case 'USD': {
+                return '$'
+            }
+            default: {
+                return ''
+            }
+        }
+    }
     render() {
         const { book } = this.state;
         if (!book) return <div>Loading....</div>
@@ -69,17 +85,16 @@ export class BookDetails extends React.Component {
         const { prevBookId } = this.state
         return (
             <section className="book-details slide-in-fwd-tr">
-                <div className={`book-preview ${this.getClassNameByPrice(book.listPrice.amount)} `}>
+                <div className="book-preview"  >
                     <img src={book.thumbnail} />
                     <div className="book-data">
                         <h2>{book.title}</h2>
                         <label>{book.authors}</label>
                         <h3>{book.subtitle}</h3>
                         <h3>{this.getPageCount(book.pageCount)}</h3>
-                        <p>{this.getPublishedDate(book.publishDate)}</p>
-                        {book.listPrice.isOnSale &&
-                            <img className="sale-img" src="./assets/img/sale.gif" />
-                        }
+                        <h5 className="currency-title">{book.listPrice.amount} {this.getCurrency(book.listPrice.currencyCode)} </h5>
+                        <p >{this.getPublishedDate(book.publishDate)}</p>
+                        {book.listPrice.isOnSale && <h5 className="sale-title">Sale</h5>}
                         <LongTxt text={book.description} />
                     </div>
                 </div>
