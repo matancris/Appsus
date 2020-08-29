@@ -18,7 +18,14 @@ export class MailApp extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ mailsType: 'income' })
+        const mailSection = new URLSearchParams(window.location.href).get('section')
+        if (mailSection) {
+            console.log("MailApp -> componentDidMount -> mailSection", mailSection)
+            this.setState({ mailsType: mailSection })
+        }
+        else {
+            this.setState({ mailsType: 'income' })
+        }
         this.loadMails();
     }
 
@@ -102,26 +109,42 @@ export class MailApp extends React.Component {
 
     // ASIDEBAR NAVIGATE
 
-    openInbox = () => {
-        this.setState({ mailsType: 'income' })
+    changeMailSection = (section) => {
+        this.props.history.push(`/mail?&section=${section}`)
+        const mailSection = new URLSearchParams(window.location.href).get('section')
+        this.setState({ mailsType: mailSection })
     }
 
-    openOutcomes = () => {
-        this.setState({ mailsType: 'outcome' })
-    }
 
-    openStarred = () => {
-        mailService.query()
-            .then(() => this.setState({ mailsType: 'starred' }))
-    }
+    // changeMailSection = (section) => {
+    //     const mailSection = new URLSearchParams(window.location.href).get('section')
+    //     if (mailSection) {
+    //         console.log("MailApp -> componentDidMount -> mailSection", mailSection)
+    //         this.setState({ mailsType: mailSection })
+    //     // this.setState({mailsType: section})
+    //     }
+    // }
 
-    openDrafts = () => {
-        this.setState({ mailsType: 'draft' })
-    }
+    // changeMailSection = (section) => {
+    //     switch (section) {
+    //         case 'inbox':
+    //             this.setState({ mailsType: 'income' })
+    //             break;
+    //         case 'sent':
+    //             this.setState({ mailsType: 'outcome' })
+    //             break;
+    //         case 'starred':
+    //             this.setState({ mailsType: 'starred' })
+    //             break;
+    //         case 'drafts':
+    //             this.setState({ mailsType: 'draft' })
+    //             break;
+    //         case 'deleted':
+    //             this.setState({ mailsType: 'trash' })
+    //             break;
 
-    openTrash = () => {
-        this.setState({ mailsType: 'trash' })
-    }
+    //     }
+    // }
 
     toggleMobileMenu = () => {
         this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen })
@@ -158,7 +181,7 @@ export class MailApp extends React.Component {
         return (
             <section className="main-mail scale-in-hor-right flex">
                 {this.state.isMobileMenuOpen && <div className="screen" onClick={this.toggleMobileMenu}></div>}
-                <AsideBar openCompose={this.openCompose} onSent={this.openOutcomes} onInbox={this.openInbox} onStarred={this.openStarred} isMobileMenuOpen={this.state.isMobileMenuOpen} onDrafts={this.openDrafts} unreadMailAmount={this.state.unreadMailAmount} onTrash={this.openTrash} />
+                <AsideBar openCompose={this.openCompose} onSent={this.openOutcomes} onInbox={this.openInbox} onStarred={this.openStarred} isMobileMenuOpen={this.state.isMobileMenuOpen} onDrafts={this.openDrafts} unreadMailAmount={this.state.unreadMailAmount} onTrash={this.openTrash} onChangeSection={this.changeMailSection} />
                 <div className="mails-container">
                     <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} onOpenMobileMenu={this.toggleMobileMenu} />
                     <MailList mails={mails} changeRead={this.changeRead} removeMail={this.removeMail} toggleStar={this.toggleStar} onSendToTrash={this.sendToTrash} />
