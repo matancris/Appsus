@@ -288,3 +288,12 @@ a{
     background-color: rgb(199, 199, 199);
   }
   
+.sale-title{
+    font-size: 3rem;
+    margin: 0;
+    color: rgb(194, 34, 34);
+}
+
+.currency-title{
+    margin: 0;
+}

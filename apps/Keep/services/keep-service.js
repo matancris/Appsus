@@ -44,6 +44,18 @@ var gKeeps = [
     },
     {
         id: utilsService.makeId(),
+        type: "NoteAudio",
+        isPinned: false,
+        info: {
+            url: "http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3",
+            title: "Best Scene"    
+        },
+        style: {
+            backgroundColor: '#ffd5e5'
+        }
+    },
+    {
+        id: utilsService.makeId(),
         type: "NoteTodos",
         isPinned: false,
         info: {
@@ -62,7 +74,7 @@ var gKeeps = [
         type: "NoteVideo",
         isPinned: false,
         info: {
-            url: "https://www.youtube.com/embed/tsFeIVJfKsA"
+         url: "https://www.youtube.com/embed/E_Vt4MlbM0c",
             // title: "Me playing Mi"
         },
         style: {
@@ -74,7 +86,6 @@ var gKeeps = [
         type: "NoteImg",
         isPinned: false,
         info: {
-            // url: "https://getsocialmediatips.com/wp-content/uploads/2019/01/2019-valentines-day-gif-guide.gif",
             url: "https://besttv232-ynet-images1-prod.cdn.it.best-tv.com/PicServer5/2019/02/14/9065019/906501001001599640360no.jpg",
             title: "Me playing Mi"
         },
@@ -87,8 +98,10 @@ var gKeeps = [
         type: "NoteVideo",
         isPinned: false,
         info: {
-            url: "https://www.youtube.com/embed/Mkp9zNM2qoo",
-            title: "colors song"
+            // url: "https://www.youtube.com/embed/Mkp9zNM2qoo",
+            url: "https://www.youtube.com/embed/tsFeIVJfKsA",
+        
+            title: "Nirvana song"
         },
         style: {
             backgroundColor: '#ececec'
@@ -102,18 +115,24 @@ var gKeeps = [
             txt: "PassWord: 123456 \n UserName: HillaAndMatan"
         },
         style: {
-            backgroundColor: '#ffd5e5'
+            backgroundColor: '#d4ebd0'
         }
     },
+    
     {
         id: utilsService.makeId(),
-        type: "NoteAudio",
+        type: "NoteTodos",
         isPinned: false,
         info: {
-            url: "http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"    
+            label: "How was it:",
+            todos: [
+                { txt: "Add Audio to the keeps", doneAt: 187111111 },
+                { txt: "Add canvas to the keeps", doneAt: null },
+                { txt: "Send massage to the best practitioner Shahar Paratz", doneAt: null }
+            ]
         },
         style: {
-            backgroundColor: '#ffd5e5'
+            backgroundColor: '#d6e5fa'
         }
     }
 ];
