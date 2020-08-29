@@ -8,8 +8,7 @@ import { NoteTodos } from "../notes-app/NoteTodos.jsx"
 import { NoteTxt } from "../notes-app/NoteTxt.jsx"
 
 import { KeepEdit } from "./KeepEdit.jsx"
-import { Edit } from "./Edit.jsx"
-import { KeepAdd } from "./KeepAdd.jsx"
+    import { KeepAdd } from "./KeepAdd.jsx"
 
 import { keepService } from '../../services/keep-service.js'
 
@@ -68,8 +67,9 @@ export class KeepDetails extends React.Component {
                         onCopy={this.props.onCopy} onPin={this.props.onPin} isDetailsOn={true}
                         onStyleChange={this.props.onStyleChange} onLoadKeep={this.props.loadKeeps}
                         loadKeep={this.loadKeep} changeStyleDetails={this.changeStyle}
-                        removeOnDetails={this.removeOnDetails} />
-                    <KeepAdd isEdit={true} keep={keep} onAddKeep={this.props.saveKeep} loadKeep={this.loadKeep} />
+                        removeOnDetails={this.removeOnDetails}  getTypeNote={this.props.getTypeNote}/>
+                    <KeepAdd isEdit={true} keep={keep} onAddKeep={this.props.saveKeep} loadKeep={this.loadKeep} 
+                    getTypeNote={this.props.getTypeNote} />
                 </div>
             </article>
         )

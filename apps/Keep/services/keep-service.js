@@ -24,7 +24,7 @@ var gKeeps = [
         type: "NoteTxt",
         isPinned: false,
         info: {
-            txt: "Home is where the heart is❤"
+            txt: "#Home is where the heart is❤ #I don’t think of all the misery but of the beauty that still remains"
         },
         style: {
             backgroundColor: '#ffd5e5'
@@ -74,7 +74,7 @@ var gKeeps = [
         type: "NoteVideo",
         isPinned: false,
         info: {
-         url: "https://www.youtube.com/embed/E_Vt4MlbM0c",
+         url: "https://www.youtube.com/embed/Eq-eQKoEycM",
             // title: "Me playing Mi"
         },
         style: {
@@ -112,7 +112,7 @@ var gKeeps = [
         type: "NoteTxt",
         isPinned: false,
         info: {
-            txt: "PassWord: 123456 \n UserName: HillaAndMatan"
+            txt: `PassWord: 123456 \n UserName: HillaAndMatan`
         },
         style: {
             backgroundColor: '#d4ebd0'
@@ -132,7 +132,7 @@ var gKeeps = [
             ]
         },
         style: {
-            backgroundColor: '#d6e5fa'
+            backgroundColor: 'white'
         }
     }
 ];

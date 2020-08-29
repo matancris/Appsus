@@ -3,6 +3,7 @@ import { keepService } from './services/keep-service.js'
 import { KeepAdd } from './cmps/keep-app/KeepAdd.jsx'
 import { KeepList } from './cmps/keep-app/KeepList.jsx'
 import { KeepFilter } from './cmps/keep-app/KeepFilter.jsx'
+import { KeepDetails } from './cmps/keep-app/KeepDetails.jsx'
 import { Modal } from './cmps/Modal.jsx'
 import eventBus from '../../service/event-bus-service.js'
 
@@ -111,13 +112,30 @@ export class KeepApp extends React.Component {
         keepService.doneNote(keep.id, todoIdx).then(() => { this.loadKeeps() })
     }
 
+
+    getTypeNote(type) {
+        switch (type) {
+            case 'NoteTxt': {
+                return 'txt'
+            }
+            case 'NoteImg':
+            case 'NoteAudio':
+            case 'NoteVideo': {
+                return 'url'
+            }
+            case 'NoteTodos': {
+                return 'todos'
+            }
+        }
+    }
+
     render() {
         const keepsToShow = this.getKeepsForDisplay();
         const pinKeeps = this.getKeepsPins();
         const { selectedKeep } = this.state;
         return (
             <section id="keep-up" className="keep-app scale-in-hor-right align-center-text">
-                <KeepAdd isEdit={false} onAddKeep={this.addKeep} />
+                <KeepAdd isEdit={false} onAddKeep={this.addKeep} getTypeNote={this.getTypeNote} />
                 <KeepFilter onSetFilter={this.setFilter} />
                 <div className="container-lists" >
                     <KeepList ispins={true} keeps={pinKeeps} onRemove={this.removeKeep} onStyleChange={this.styleChange}
@@ -125,11 +143,11 @@ export class KeepApp extends React.Component {
                     <hr />
 
                     <KeepList ispins={false} keeps={keepsToShow} onRemove={this.removeKeep} onStyleChange={this.styleChange}
-                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} />
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} getTypeNote={this.getTypeNote}/>
 
                     {selectedKeep && <Modal unSelectedKeep={this.unSelectedKeep} selectedKeep={selectedKeep} ispins={false} onRemove={this.removeKeep} onStyleChange={this.styleChange}
                         onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} onLoadKeep={this.loadKeeps}
-                        saveKeep={this.saveKeep} doneNote={this.doneNote} loadKeeps={this.loadKeeps} />}
+                        saveKeep={this.saveKeep} doneNote={this.doneNote} loadKeeps={this.loadKeeps} getTypeNote={this.getTypeNote} />}
                 </div>
             </section>
         )

@@ -9,7 +9,7 @@ export function KeepList(props) {
                 {
                     props.keeps.map(keep =>
                         <KeepPreview key={keep.id} keep={keep} onRemove={props.onRemove} onStyleChange={props.onStyleChange}
-                            onCopy={props.onCopy} onPin={props.onPin} onEditKeep={props.onEditKeep} 
+                            onCopy={props.onCopy} onPin={props.onPin} onEditKeep={props.onEditKeep}  getTypeNote={props.getTypeNote}
                         />
                     )
                 }
@@ -17,7 +17,6 @@ export function KeepList(props) {
         </section>
     )
 
-    // onUnEditKeep={props.onUnEditKeep}
 }
 
 

@@ -6,14 +6,16 @@ export class KeepAdd extends React.Component {
         value: '',
         keep: keepService.getEmptyKeep()
     }
+    elInput = React.createRef();
 
     componentDidMount() {
         if (this.props.isEdit) {
-            const typeNote = this.getTypeNote(this.props.keep.type);
+            const typeNote = this.props.getTypeNote(this.props.keep.type);
             let value = this.props.keep.info[typeNote]
             if (typeNote === 'todos') value = value.map(todo => todo.txt)
             this.setState({ keep: this.props.keep, value: value })
         }
+        this.elInput.current.focus();
     }
 
     onInputChange = (ev) => {
@@ -47,24 +49,8 @@ export class KeepAdd extends React.Component {
         return todosMap;
     }
 
-    onTextChoose = () => {
-        this.setState({ keep: { ...this.state.keep, type: 'NoteTxt' }, value: this.getPlaceHolder('NoteTxt') })
-    }
-
-
-    onImgChoose = () => {
-        this.setState({ keep: { ...this.state.keep, type: 'NoteImg' }, value: this.getPlaceHolder('NoteImg') })
-    }
-
-    onVideoChoose = () => {
-        this.setState({ keep: { ...this.state.keep, type: 'NoteVideo' }, value: this.getPlaceHolder('NoteVideo') })
-    }
-    onAudioChoose = () => {
-        this.setState({ keep: { ...this.state.keep, type: 'NoteAudio' }, value: this.getPlaceHolder('NoteAudio') })
-    }
-
-    onTodosChoose = () => {
-        this.setState({ keep: { ...this.state.keep, type: 'NoteTodos' }, value: this.getPlaceHolder('NoteTodos') })
+    onChange(type) {
+        this.setState({ keep: { ...this.state.keep, type: type }, value: this.getPlaceHolder(type) })
     }
 
 
@@ -73,22 +59,6 @@ export class KeepAdd extends React.Component {
         this.props.onAddKeep(this.state.keep);
         this.setState({ keep: keepService.getEmptyKeep() })
         this.setState({ value: '' })
-    }
-
-    getTypeNote(type) {
-        switch (type) {
-            case 'NoteTxt': {
-                return 'txt'
-            }
-            case 'NoteImg':
-            case 'NoteAudio':
-            case 'NoteVideo': {
-                return 'url'
-            }
-            case 'NoteTodos': {
-                return 'todos'
-            }
-        }
     }
 
     getPlaceHolder(type) {
@@ -112,18 +82,17 @@ export class KeepAdd extends React.Component {
     }
 
     render() {
-        const { keep } = this.state.keep
+        // const { keep } = this.state.keep
         return (
             <div className='keep-add'>
                 <div className="keep-add-container">
-                    <input type="search" className="input-search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
-                    <button onClick={this.onTextChoose}><i className="fas fa-font text-btn"></i></button>
-                    <button onClick={this.onImgChoose}><i className="fas fa-image img-btn"></i></button>
-                    <button onClick={this.onVideoChoose}><i className="fab fa-youtube video-btn"></i></button>
-                    <button onClick={this.onTodosChoose}><i className="fas fa-list-ul todo-btn"></i></button>
-                    <button onClick={this.onAudioChoose}><i className="fas fa-volume-up"></i></button>
+                    <input ref={this.elInput} type="search" className="input-search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
+                    <button onClick={() => this.onChange('NoteTxt')}><i className="fas fa-font text-btn"></i></button>
+                    <button onClick={() => this.onChange('NoteImg')}><i className="fas fa-image img-btn"></i></button>
+                    <button onClick={() => this.onChange('NoteVideo')}><i className="fab fa-youtube video-btn"></i></button>
+                    <button onClick={() => this.onChange('NoteTodos')}><i className="fas fa-list-ul todo-btn"></i></button>
+                    <button onClick={() => this.onChange('NoteAudio')}><i className="fas fa-volume-up"></i></button>
                     <button onClick={this.addKeep}><i className="fas fa-plus add-btn"></i></button>
-                    
                 </div>
             </div>
         )

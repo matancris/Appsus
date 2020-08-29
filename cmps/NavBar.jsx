@@ -10,7 +10,7 @@ function _NavBar(props) {
 
     return (
         <nav className="main-nav flex space-between">
-            <div className="logo">AppSus<span></span></div>
+            <div className="logo">AppSus </div>
             <div className="nav-links flex space-around">
 
                 <NavLink activeClassName='active-nav' exact to="/"><i className="fas fa-home"></i> </NavLink>
