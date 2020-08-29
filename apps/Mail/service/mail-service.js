@@ -11,9 +11,8 @@ export const mailService = {
     toggleStar,
     sendToDrafts,
     countUnreadMails,
-    getEmptyMailForKeep,
     setTrashType
-    // getNextPrev,
+
 }
 
 const MAILS_KEY = "mails";
@@ -65,7 +64,6 @@ function updateReaden(mail, isUnReadClick = true) {
         .then((mailIdx) => query()
             .then(mails => {
                 var currMail = mails[mailIdx]
-                console.log("updateReaden -> isReadenClick", isUnReadClick)
                 currMail.isRead = isUnReadClick;
                 storageService.saveToStorage(MAILS_KEY, mails)
                 return Promise.resolve()
@@ -79,7 +77,6 @@ function toggleStar(mail) {
             .then(mails => {
                 var currMail = mails[mailIdx]
                 currMail.isStarred = !currMail.isStarred;
-                console.log(mails);
                 storageService.saveToStorage(MAILS_KEY, mails)
                 return Promise.resolve()
             }))
@@ -89,7 +86,6 @@ function getIdxById(mailId) {
     return query()
         .then(mails => {
             var idx = mails.findIndex(mail => mail.id === mailId)
-            console.log("getIdxById -> idx", idx)
             return Promise.resolve(idx)
         })
 }
@@ -105,26 +101,12 @@ function sendToDrafts(draft) {
         isRead: true,
         sentAt: Date.now()
     }
-    console.log(newDraft);
     return query()
         .then(mails => {
             mails.push(newDraft);
             storageService.saveToStorage(MAILS_KEY, mails);
             return Promise.resolve();
         })
-}
-
-function getEmptyMailForKeep(keep) {
-    const mail= {
-    id: utilsService.makeId(),
-    type: 'outcome',
-    address: '',
-    subject: '',
-    body: keep,
-    isStarred: false,
-    isRead: true,
-    sentAt: ''
-    }
 }
 
 
@@ -175,7 +157,6 @@ function removeMail(mailId) {
     return query()
         .then((mails) => {
             mails = mails.filter(mail => mail.id !== mailId)
-            console.log("removeMail -> mails", mails)
             storageService.saveToStorage(MAILS_KEY, mails);
             return Promise.resolve();
         })

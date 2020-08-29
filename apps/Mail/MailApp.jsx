@@ -23,13 +23,12 @@ export class MailApp extends React.Component {
         const mailSection = new URLSearchParams(window.location.href).get('section')
         const keepToMail = new URLSearchParams(window.location.href).get('keep')
         if (mailSection) {
-            console.log("MailApp -> componentDidMount -> mailSection", mailSection)
             this.setState({ mailsType: mailSection })
         }
         else {
             this.setState({ mailsType: 'income' })
         }
-        
+
         if (keepToMail) {
             this.setState({ keepToMail, isComposeShown: true })
         }
@@ -37,7 +36,6 @@ export class MailApp extends React.Component {
     }
 
     loadMails = () => {
-        console.log('hi');
         mailService.query()
             .then((mails) => {
                 this.setUnreadAmount()
@@ -48,7 +46,6 @@ export class MailApp extends React.Component {
     // MAIL EDIT
 
     changeRead = (mail, isUnReadClick) => {
-        console.log(mail);
         mailService.updateReaden(mail, isUnReadClick)
             .then(() => {
                 this.loadMails()
@@ -87,7 +84,6 @@ export class MailApp extends React.Component {
     // COMPOSE
 
     openCompose = () => {
-        console.log(this.state.isComposeShown);
         this.setState({ isComposeShown: true })
     }
 
@@ -96,7 +92,6 @@ export class MailApp extends React.Component {
     }
 
     sendToDrafts = (draft) => {
-        console.log(draft);
         if (!draft.address && !draft.subject && !draft.body) {
             this.closeCompose();
             return
@@ -133,7 +128,6 @@ export class MailApp extends React.Component {
     setUnreadAmount = () => {
         mailService.countUnreadMails()
             .then(counter => {
-                console.log(counter);
                 this.setState({ unreadMailAmount: counter })
             })
     }
