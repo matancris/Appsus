@@ -30,7 +30,7 @@ export class Modal extends React.Component {
         console.log("Modal -> render -> selectedKeep", selectedKeep)
         return (
             <div id="modal" className={`modal-wrapper   ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
-                <div className="modal-content slide-in-elliptic-top-fwd" onClick={(ev) => ev.stopPropagation()}>
+                <div className="modal-content slide-in-elliptic-top-fwd flex column" onClick={(ev) => ev.stopPropagation()}>
                     <KeepDetails keep={selectedKeep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
                         onCopy={this.props.onCopy} onPin={this.props.onPin} isEditView={true}
                         saveKeep={this.saveKeep} doneNote={this.props.doneNote} onCloseModal={this.onCloseModal} />

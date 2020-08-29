@@ -13,12 +13,15 @@ export class MailCompose extends React.Component {
     elInput = React.createRef()
 
     componentDidMount() {
+        const keepValue = this.props.keepToMail
+        if (keepValue){
+            console.log(keepValue);
+            this.setState({newMail:{...this.state.newMail,  body: keepValue} }, () => console.log(this.state.newMail))
+        }
         this.elInput.current.focus()
     }
 
     onInputChange = (ev) => {
-        console.log(this.newMail);
-        console.log(ev.target.name);
         this.setState({ newMail: { ...this.state.newMail, [ev.target.name]: ev.target.value } })
     }
 
@@ -46,7 +49,7 @@ export class MailCompose extends React.Component {
                     </div>
 
                     <div className="compose-body flex-1">
-                        <textarea rows="25" type="text" name="body" placeholder="Write your mail here" onChange={this.onInputChange}  />
+                        <textarea value={this.state.newMail.body} rows="25" type="text" name="body" placeholder="Write your mail here" onChange={this.onInputChange} />
                     </div>
                     <section className="compose-footer flex space-between align-center">
                         <button type="submit" title="Send"> Send </button>

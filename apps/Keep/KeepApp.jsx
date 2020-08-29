@@ -4,7 +4,9 @@ import { KeepAdd } from './cmps/keep-app/KeepAdd.jsx'
 import { KeepList } from './cmps/keep-app/KeepList.jsx'
 import { KeepFilter } from './cmps/keep-app/KeepFilter.jsx'
 import { Modal } from './cmps/Modal.jsx'
-import {utilsService} from '../../service/utils-service.js'
+import eventBus from '../../service/event-bus-service.js'
+
+
 export class KeepApp extends React.Component {
     state = {
         keeps: [],
@@ -34,15 +36,25 @@ export class KeepApp extends React.Component {
 
     addKeep = (keep) => {
         if (!keep) return;
-        keepService.save(keep).then(() => { this.loadKeeps() })
+        keepService.save(keep)
+        .then(() => { 
+            eventBus.emit('notify', { msg: 'keep added!'})
+            this.loadKeeps() 
+        })
     }
 
     saveKeep = (keep) => {
-        keepService.save(keep).then(() => { this.loadKeeps() })
+        keepService.save(keep).then(() => {
+            eventBus.emit('notify', { msg: 'changes saved!'})
+             this.loadKeeps()
+             })
     }
 
     removeKeep = (keepId) => {
-        keepService.removeKeep(keepId).then(() => { this.loadKeeps() })
+        keepService.removeKeep(keepId).then(() => {
+            eventBus.emit('notify', { msg: 'keep have been removed!'})
+             this.loadKeeps()
+             })
     }
 
     styleChange = (keepId, color) => {

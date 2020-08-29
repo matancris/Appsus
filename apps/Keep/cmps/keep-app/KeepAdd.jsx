@@ -1,4 +1,4 @@
-const { Link } = ReactRouterDOM
+
 import { keepService } from '../../services/keep-service.js'
 
 export class KeepAdd extends React.Component {
@@ -114,17 +114,17 @@ export class KeepAdd extends React.Component {
     render() {
         const { keep } = this.state.keep
         return (
-                <div className='keep-add'>
-                    <div className="keep-add-container">
-                        <input type="search" className="input-search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
-                        <button onClick={this.onTextChoose}><i className="fas fa-font text-btn"></i></button>
-                        <button onClick={this.onImgChoose}><i className="fas fa-image img-btn"></i></button>
-                        <button onClick={this.onVideoChoose}><i className="fab fa-youtube video-btn"></i></button>
-                        <button onClick={this.onTodosChoose}><i className="fas fa-list-ul todo-btn"></i></button>
-                        <button onClick={this.onAudioChoose}><i className="fas fa-volume-up"></i></button>
-                        <button onClick={this.addKeep}><i className="fas fa-plus add-btn"></i></button>
-
-                    </div>
+            <div className='keep-add'>
+                <div className="keep-add-container">
+                    <input type="search" className="input-search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
+                    <button onClick={this.onTextChoose}><i className="fas fa-font text-btn"></i></button>
+                    <button onClick={this.onImgChoose}><i className="fas fa-image img-btn"></i></button>
+                    <button onClick={this.onVideoChoose}><i className="fab fa-youtube video-btn"></i></button>
+                    <button onClick={this.onTodosChoose}><i className="fas fa-list-ul todo-btn"></i></button>
+                    <button onClick={this.onAudioChoose}><i className="fas fa-volume-up"></i></button>
+                    <button onClick={this.addKeep}><i className="fas fa-plus add-btn"></i></button>
+                    
+                </div>
             </div>
         )
     }

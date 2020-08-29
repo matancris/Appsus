@@ -11,12 +11,15 @@ a{
     text-decoration: none;
 }
 
+.book-app{
+    width: 100%;
+    background-image: url('../../../../assets/img/side-bgi.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
 .book-app .books{
     width: 100%;
-    background-image: url('../../../../assets/img/solid-bgi.jpeg');
-    background-repeat: repeat;
-    background-size: cover;
-    background-position: bottom;
 }
 
 .book-filter {

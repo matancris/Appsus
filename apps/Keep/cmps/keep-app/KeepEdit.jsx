@@ -1,3 +1,4 @@
+const { Link } = ReactRouterDOM
 
 import { Color } from '../Color.jsx'
 import { KeepAdd } from './KeepAdd.jsx'
@@ -30,10 +31,10 @@ export class KeepEdit extends React.Component {
         if (this.props.changeStyleDetails) this.props.changeStyleDetails(keepId, color)
     }
 
-    onRemove = (keepId,ev) =>{
+    onRemove = (keepId, ev) => {
         ev.stopPropagation();
         this.props.onRemove(keepId);
-        if(this.props.removeOnDetails) this.props.removeOnDetails();
+        if (this.props.removeOnDetails) this.props.removeOnDetails();
     }
 
     // typeButton = (keep) => {
@@ -52,10 +53,27 @@ export class KeepEdit extends React.Component {
     //         }
     //     }
     // }
-    onMailKeep = (keep, ev) =>{
+    onMailKeep = (keep, ev) => {
         ev.stopPropagation();
+    }
+
+    typeMap(type) {
+        switch (type) {
+            case 'NoteTxt': {
+                return 'txt'
+            }
+            case 'NoteVideo':
+            case 'NoteAudio':
+            case 'NoteImg': {
+                return 'url';
+            }
+            case 'NoteTodos': {
+                return 'todos';
+            }
+        }
 
     }
+
 
     typeButton = (keep) => {
         switch (keep.type) {
@@ -88,7 +106,7 @@ export class KeepEdit extends React.Component {
                 <button href="#modal" onClick={(ev) => this.props.onEdit(keep)}><i className="far fa-edit"></i></button>
                 <button onClick={(ev) => this.props.onCopy(keep, ev)}><i className="fas fa-clone"></i></button>
                 <button onClick={(ev) => this.onRemove(keep.id, ev)}><i className="fas fa-trash-alt"></i></button>
-
+                <Link to={`/mail?&keep=${keep.info[this.typeMap(keep.type)]}`}><i className="fas fa-envelope-open-text"></i></Link>
             </div>
         )
     }
