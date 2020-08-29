@@ -39,6 +39,7 @@ html {
 body {
     margin: 0;
     height: 100%;
+    font-size: 0.875rem;
 }
 
 /* HomePage  */
@@ -58,10 +59,9 @@ body {
 }
 
 .logo-img {
-    width: 100px;
-    height: 100px;
-    margin: 35px;
-    /* position: absolute; */
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 2rem;
 }
 
 .logo-gif {
@@ -87,7 +87,7 @@ body {
 
 .title-home {
     text-align: center;
-    font-size: 6.5rem;
+    font-size: 6.5em;
     font-family: Marck-script, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #373737;
     margin-bottom: 65px;
@@ -275,6 +275,9 @@ svg {
     html {
         font-size: 14px;
     }
+
+    
+
     .main-nav {
         flex-direction: column;
         align-items: center;

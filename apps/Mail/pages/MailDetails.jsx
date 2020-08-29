@@ -1,4 +1,4 @@
-import { LongTxt } from '../cmps/mail-app/LongTxt.jsx'
+const { Link } = ReactRouterDOM
 import { mailService } from '../service/mail-service.js'
 import { AsideBar } from '../../../cmps/AsideBar.jsx'
 
@@ -24,14 +24,19 @@ export class MailDetails extends React.Component {
         this.setState({ isLongTxtShown })
     }
 
+    changeMailSection = (section) => {
+        this.props.history.push(`/mail?&section=${section}`)
+    }
+
 
     render() {
         const mail = this.state.mail
         if (!mail) return <h4>loading</h4>
         return (
             <div className="mail-details flex scale-in-hor-right">
-                <AsideBar></AsideBar>
+                <AsideBar onChangeSection={this.changeMailSection}></AsideBar>
                 <div className="mail-data-container">
+                <Link to={`/keep/mail?&mail=${mail.body}`}>keep</Link>
                     <h1>{mail.subject}</h1>
                     <h3>Sender: {mail.address}</h3>
                     <p>{mail.body}</p>

@@ -9,9 +9,11 @@ export const mailService = {
     removeMail,
     getMailById,
     toggleStar,
-    getNextPrev,
     sendToDrafts,
-    countUnreadMails
+    countUnreadMails,
+    getEmptyMailForKeep,
+    setTrashType
+    // getNextPrev,
 }
 
 const MAILS_KEY = "mails";
@@ -59,7 +61,6 @@ function getMailById(mailId) {
 }
 
 function updateReaden(mail, isUnReadClick = true) {
-    console.log("updateReaden -> mail", mail)
     return getIdxById(mail.id)
         .then((mailIdx) => query()
             .then(mails => {
@@ -111,6 +112,19 @@ function sendToDrafts(draft) {
             storageService.saveToStorage(MAILS_KEY, mails);
             return Promise.resolve();
         })
+}
+
+function getEmptyMailForKeep(keep) {
+    const mail= {
+    id: utilsService.makeId(),
+    type: 'outcome',
+    address: '',
+    subject: '',
+    body: keep,
+    isStarred: false,
+    isRead: true,
+    sentAt: ''
+    }
 }
 
 
@@ -167,18 +181,34 @@ function removeMail(mailId) {
         })
 }
 
-function getNextPrev(mailId) {
-    return query()
-        .then(mails => {
-            const mailIdx = mails.findIndex(mail => mail.id === mailId)
-            const nextmail = mails[mailIdx + 1] || mails[0]
-            const prevmail = mails[mailIdx - 1] || mails[mails.length - 1]
-            return {
-                prevmailId: prevmail.id,
-                nextmailId: nextmail.id
-            }
-        })
+function setTrashType(mailId){
+    return getIdxById(mailId)
+        .then((mailIdx) => query()
+            .then(mails => {
+                var currMail = mails[mailIdx]
+                currMail.type = 'trash';
+                storageService.saveToStorage(MAILS_KEY, mails)
+                return Promise.resolve()
+            }))
 }
+
+
+
+
+
+
+// function getNextPrev(mailId) {
+//     return query()
+//         .then(mails => {
+//             const mailIdx = mails.findIndex(mail => mail.id === mailId)
+//             const nextmail = mails[mailIdx + 1] || mails[0]
+//             const prevmail = mails[mailIdx - 1] || mails[mails.length - 1]
+//             return {
+//                 prevmailId: prevmail.id,
+//                 nextmailId: nextmail.id
+//             }
+//         })
+// }
 
 
 

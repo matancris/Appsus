@@ -4,7 +4,7 @@ import { KeepAdd } from './cmps/keep-app/KeepAdd.jsx'
 import { KeepList } from './cmps/keep-app/KeepList.jsx'
 import { KeepFilter } from './cmps/keep-app/KeepFilter.jsx'
 import { Modal } from './cmps/Modal.jsx'
-
+import {utilsService} from '../../service/utils-service.js'
 export class KeepApp extends React.Component {
     state = {
         keeps: [],
@@ -14,7 +14,15 @@ export class KeepApp extends React.Component {
     }
 
     componentDidMount() {
-        this.loadKeeps();
+        const mailToKeep = new URLSearchParams(window.location.href).get('mail');
+        if (mailToKeep) {
+            let keep = keepService.getEmptyKeep()
+            keep.info.txt = mailToKeep;
+            keepService.save(keep)
+            .then(() =>{this.loadKeeps()})
+            .then(() => this.setState({selectedKeep: keep}, () => console.log(this.state.keeps, keep)))
+        }
+        else this.loadKeeps();
     }
 
     loadKeeps = () => {

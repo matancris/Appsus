@@ -1,7 +1,7 @@
 
 const { Link } = ReactRouterDOM
 
-export function MailPreview({ mail, removeMail, changeRead, onToggleStar }) {
+export function MailPreview({ mail, removeMail, changeRead, onToggleStar, onSendToTrash }) {
 
     return (
         // 
@@ -26,6 +26,7 @@ export function MailPreview({ mail, removeMail, changeRead, onToggleStar }) {
                         ev.preventDefault()
                         ev.stopPropagation()
                         removeMail(mail.id)
+                        onSendToTrash(mail.id)
                     }
                     } ><i className="fas fa-trash"></i> </button>
                     <button onClick={(ev) => {
