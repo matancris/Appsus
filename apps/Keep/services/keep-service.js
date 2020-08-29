@@ -74,7 +74,7 @@ var gKeeps = [
         type: "NoteVideo",
         isPinned: false,
         info: {
-         url: "https://www.youtube.com/embed/E_Vt4MlbM0c",
+         url: "https://www.youtube.com/embed/Eq-eQKoEycM",
             // title: "Me playing Mi"
         },
         style: {

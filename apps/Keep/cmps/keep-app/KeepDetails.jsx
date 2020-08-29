@@ -8,8 +8,7 @@ import { NoteTodos } from "../notes-app/NoteTodos.jsx"
 import { NoteTxt } from "../notes-app/NoteTxt.jsx"
 
 import { KeepEdit } from "./KeepEdit.jsx"
-import { Edit } from "./Edit.jsx"
-import { KeepAdd } from "./KeepAdd.jsx"
+    import { KeepAdd } from "./KeepAdd.jsx"
 
 import { keepService } from '../../services/keep-service.js'
 

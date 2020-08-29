@@ -36,25 +36,8 @@ export class KeepEdit extends React.Component {
         if(this.props.removeOnDetails) this.props.removeOnDetails();
     }
 
-    // typeButton = (keep) => {
-    //     switch (keep.type) {
-    //         case 'NoteTxt': {
-    //             return (<button className="btn-type"><i className="fas fa-font"></i></button>)
-    //         }
-    //         case 'NoteVideo': {
-    //             return (<button><i className="fab fa-youtube"></i></button>)
-    //         }
-    //         case 'NoteImg': {
-    //             return (<button><i className="fas fa-image"></i></button>)
-    //         }
-    //         case 'NoteTodos': {
-    //             return (<button><i className="fas fa-list-ul"></i></button>)
-    //         }
-    //     }
-    // }
     onMailKeep = (keep, ev) =>{
         ev.stopPropagation();
-
     }
 
     typeButton = (keep) => {
@@ -88,7 +71,6 @@ export class KeepEdit extends React.Component {
                 <button href="#modal" onClick={(ev) => this.props.onEdit(keep)}><i className="far fa-edit"></i></button>
                 <button onClick={(ev) => this.props.onCopy(keep, ev)}><i className="fas fa-clone"></i></button>
                 <button onClick={(ev) => this.onRemove(keep.id, ev)}><i className="fas fa-trash-alt"></i></button>
-
             </div>
         )
     }

@@ -277,7 +277,10 @@ svg {
 .active-nav {
     color: rgb(195, 104, 0);
 }
-
+.logo-img{
+    width: 40px;
+    height: 50px;
+}
 
 /* MEDIA QUERY */
 
@@ -344,11 +347,20 @@ svg {
     .mail-preview div:first-of-type {
         overflow: hidden;
     }
-
-
+   
     /* BOOKS */
 
     .search-add {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 550px){
+    .logo-img {
+        width: 30px;
+        height: 40px;
+    }
+    .title-home{
+        font-size: 4.5em;
     }
 }
