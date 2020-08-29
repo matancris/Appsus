@@ -30,7 +30,7 @@ button {
     outline: none;
 }
 
-.book-app {
+.book-app .books{
     width: 100%;
     background-image: url('../../../../assets/img/solid-bgi.jpeg');
     background-repeat: repeat;
@@ -54,7 +54,7 @@ button {
 } */
 
 .books {
-    padding-top: 140px;
+    /* padding-top: 140px; */
 }
 
 .book-list {
@@ -121,8 +121,8 @@ button {
     border-radius: 5px;
     text-align: center;
     display: flex;
-    padding-top: 150px;
-    font-family: monospace;
+    /* padding-top: 150px; */
+    /* font-family: monospace; */
     margin-bottom: 10px;
 }
 

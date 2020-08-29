@@ -10,8 +10,8 @@ export class KeepFilter extends React.Component {
     render() {
         return <section className="Keep-filter">
             <input className="keep-filter-search" type="text" placeholder="Search:" onChange={(ev) => {
-            props.onSetFilter(ev.target.value) }} />
-
+                this.props.onSetFilter(ev.target.value, true)
+            }} />
 
             <select className="keep-sort" onChange={(value) => this.onChangeFilter(value.target.value)} >
                 <option value="All" >All</option>
@@ -19,9 +19,10 @@ export class KeepFilter extends React.Component {
                 <option value="NoteTxt">Txt</option>
                 <option value="NoteVideo">Video</option>
                 <option value="NoteTodos">Todos</option>
-                {/* <option value="NoteAudio">Audio</option> */}
+                <option value="NoteTodos">Audio</option>
             </select>
 
+            <button className="btn-search"><i className="fas fa-search "></i></button>
         </section>
     }
 }

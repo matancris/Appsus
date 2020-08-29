@@ -27,6 +27,7 @@ export class KeepAdd extends React.Component {
                 return;
             }
             case 'NoteVideo':
+            case 'NoteAudio':
             case 'NoteImg': {
                 this.setState({ keep: { ...this.state.keep, info: { url: value } } })
                 return;
@@ -58,6 +59,9 @@ export class KeepAdd extends React.Component {
     onVideoChoose = () => {
         this.setState({ keep: { ...this.state.keep, type: 'NoteVideo' }, value: this.getPlaceHolder('NoteVideo') })
     }
+    onAudioChoose = () => {
+        this.setState({ keep: { ...this.state.keep, type: 'NoteAudio' }, value: this.getPlaceHolder('NoteAudio') })
+    }
 
     onTodosChoose = () => {
         this.setState({ keep: { ...this.state.keep, type: 'NoteTodos' }, value: this.getPlaceHolder('NoteTodos') })
@@ -77,6 +81,7 @@ export class KeepAdd extends React.Component {
                 return 'txt'
             }
             case 'NoteImg':
+            case 'NoteAudio':
             case 'NoteVideo': {
                 return 'url'
             }
@@ -97,6 +102,9 @@ export class KeepAdd extends React.Component {
             case 'NoteVideo': {
                 return 'Enter video URL...'
             }
+            case 'NoteAudio': {
+                return 'Enter audio URL...'
+            }
             case 'NoteTodos': {
                 return 'Enter cooma seprated list...'
             }
@@ -113,7 +121,9 @@ export class KeepAdd extends React.Component {
                         <button onClick={this.onImgChoose}><i className="fas fa-image img-btn"></i></button>
                         <button onClick={this.onVideoChoose}><i className="fab fa-youtube video-btn"></i></button>
                         <button onClick={this.onTodosChoose}><i className="fas fa-list-ul todo-btn"></i></button>
+                        <button onClick={this.onAudioChoose}><i className="fas fa-volume-up"></i></button>
                         <button onClick={this.addKeep}><i className="fas fa-plus add-btn"></i></button>
+
                     </div>
             </div>
         )

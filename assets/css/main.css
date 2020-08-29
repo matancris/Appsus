@@ -132,6 +132,14 @@ svg {
     max-width: 50%;
 }
 
+.nav-links a{
+    font-size: 3rem;
+    transition: .3s;
+}
+.nav-links a:hover{
+    color: #373737;
+}
+
 .nav-links>* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.5rem;
@@ -161,9 +169,7 @@ svg {
     font-size: 1.2rem;
 }
 
-/* .aside-main-nav .inbox{
-    padding-left: 10px;
-} */
+
 
 .aside-main-nav .fa-inbox {
     color: green;

@@ -9,6 +9,7 @@ export class KeepApp extends React.Component {
     state = {
         keeps: [],
         filterBy: 'All',
+        filterByTxt: '',
         selectedKeep: null
     }
 
@@ -50,16 +51,25 @@ export class KeepApp extends React.Component {
         keepService.keepPin(keep).then(() => { this.loadKeeps() })
     }
 
-    setFilter = (type) => {
-        this.setState({ filterBy: type });
+    setFilter = (type, byTxt = false) => {
+        if (!byTxt) this.setState({ filterBy: type });
+        else this.setState({ filterByTxt: type });
         this.loadKeeps();
     }
 
 
     getKeepsForDisplay() {
         let keeps = this.state.keeps.filter(keep => keep.isPinned === false);
-        if (this.state.filterBy === 'All') return keeps;
-        keeps = this.state.keeps.filter(keep => keep.type === this.state.filterBy)
+        if (this.state.filterByTxt !== '') {
+            keeps = keeps.filter(keep => {
+                if (keep.type === "NoteTxt")
+                    return keep.info.txt.toLowerCase().includes(this.state.filterByTxt.toLowerCase())
+            })
+        }
+        else {
+            if (this.state.filterBy === 'All') return keeps;
+            keeps = this.state.keeps.filter(keep => keep.type === this.state.filterBy)
+        }
         return keeps;
     }
 
@@ -70,6 +80,7 @@ export class KeepApp extends React.Component {
 
     editKeep = (keep) => {
         this.setState({ selectedKeep: keep })
+        // this.props.history.push('#')
     }
 
     unSelectedKeep = () => {
@@ -85,11 +96,10 @@ export class KeepApp extends React.Component {
         const pinKeeps = this.getKeepsPins();
         const { selectedKeep } = this.state;
         return (
-            <section className="keep-app scale-in-hor-right align-center-text">
+            <section id="keep-up" className="keep-app scale-in-hor-right align-center-text">
                 <KeepAdd isEdit={false} onAddKeep={this.addKeep} />
                 <KeepFilter onSetFilter={this.setFilter} />
-                <div>
-
+                <div className="container-lists" >
                     <KeepList ispins={true} keeps={pinKeeps} onRemove={this.removeKeep} onStyleChange={this.styleChange}
                         onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} doneNote={this.doneNote} />
                     <hr />

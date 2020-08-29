@@ -24,7 +24,7 @@ var gKeeps = [
         type: "NoteTxt",
         isPinned: false,
         info: {
-            txt: "Fullstack Me Baby!"
+            txt: "Home is where the heart is❤"
         },
         style: {
             backgroundColor: '#ffd5e5'
@@ -35,7 +35,7 @@ var gKeeps = [
         type: "NoteImg",
         isPinned: false,
         info: {
-            url: "https://images.pexels.com/photos/219302/pexels-photo-219302.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            url: "https://getsocialmediatips.com/wp-content/uploads/2019/01/2019-valentines-day-gif-guide.gif",
             title: "Me playing Mi"
         },
         style: {
@@ -62,7 +62,7 @@ var gKeeps = [
         type: "NoteVideo",
         isPinned: false,
         info: {
-            url: "https://vod-progressive.akamaized.net/exp=1598537378~acl=%2A%2F1270987899.mp4%2A~hmac=d3c930d7b3e3db37fb148d890bdde59b677fc8be642c2498e59903efa817a859/vimeo-prod-skyfire-std-us/01/3/13/325018207/1270987899.mp4?filename=Pexels+Videos+2034096.mp4"
+            url: "https://www.youtube.com/embed/tsFeIVJfKsA"
             // title: "Me playing Mi"
         },
         style: {
@@ -75,7 +75,7 @@ var gKeeps = [
         isPinned: false,
         info: {
             // url: "https://getsocialmediatips.com/wp-content/uploads/2019/01/2019-valentines-day-gif-guide.gif",
-            url: "https://data.whicdn.com/images/140418212/original.gif",
+            url: "https://besttv232-ynet-images1-prod.cdn.it.best-tv.com/PicServer5/2019/02/14/9065019/906501001001599640360no.jpg",
             title: "Me playing Mi"
         },
         style: {
@@ -87,13 +87,35 @@ var gKeeps = [
         type: "NoteVideo",
         isPinned: false,
         info: {
-            url: "https://vod-progressive.akamaized.net/exp=1598537514~acl=%2A%2F1301229203.mp4%2A~hmac=81183be5709d8db64dd8079242cb227d668372fada24506a8d271a6895f79768/vimeo-prod-skyfire-std-us/01/1216/13/331083783/1301229203.mp4?filename=Pexels+Videos+2183818.mp4"
-            // title: "Me playing Mi"
+            url: "https://www.youtube.com/embed/Mkp9zNM2qoo",
+            title: "colors song"
         },
         style: {
             backgroundColor: '#ececec'
         }
     },
+    {
+        id: utilsService.makeId(),
+        type: "NoteTxt",
+        isPinned: false,
+        info: {
+            txt: "PassWord: 123456 \n UserName: HillaAndMatan"
+        },
+        style: {
+            backgroundColor: '#ffd5e5'
+        }
+    },
+    {
+        id: utilsService.makeId(),
+        type: "NoteAudio",
+        isPinned: false,
+        info: {
+            url: "http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"    
+        },
+        style: {
+            backgroundColor: '#ffd5e5'
+        }
+    }
 ];
 
 
@@ -206,7 +228,8 @@ function doneNote(keepId,keepTodoIdx){
     return query()
     .then(keeps => {
         const keepIdx = keeps.findIndex(keep => keep.id === keepId)
-        keeps[keepIdx].info.todos[keepTodoIdx].doneAt = new Date();
+        if(keeps[keepIdx].info.todos[keepTodoIdx].doneAt === null) keeps[keepIdx].info.todos[keepTodoIdx].doneAt = new Date();
+        else keeps[keepIdx].info.todos[keepTodoIdx].doneAt = null;
         storageService.saveToStorage(KEEP_KEY, keeps);
         return Promise.resolve();
     })

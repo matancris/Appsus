@@ -26,8 +26,8 @@ export class KeepPreview extends React.Component {
         NoteTxt: NoteTxt
     }
 
-    onEditKeep = (ev, keep) => {
-        ev.stopPropagation();
+    onEditKeep = (keep) => {
+        // ev.stopPropagation();
         this.setState({ isEdit: true })
         this.props.onEditKeep(keep);
 
@@ -37,15 +37,39 @@ export class KeepPreview extends React.Component {
         this.setState({ isEdit: false })
     }
 
+    typeButton = (keep) => {
+        switch (keep.type) {
+            case 'NoteTxt': {
+                return (<h3 className="type-keep"><i className="fas fa-font btn-type"></i></h3>)
+            }
+            case 'NoteVideo': {
+                return (<h3 className="type-keep"><i className="fab fa-youtube"></i></h3>)
+            }
+            case 'NoteImg': {
+                return (<h3 className="type-keep"><i className="fas fa-image"></i></h3>)
+            }
+            case 'NoteTodos': {
+                return (<h3 className="type-keep"><i className="fas fa-list-ul"></i></h3>)
+            }
+            case 'NoteAudio': {
+                return (<h3 className="type-keep"><i className="fas fa-volume-up"></i></h3>)
+            }
+        }
+    }
+
     render() {
         const { keep } = this.props
         const DynamicCmp = this.cmpMap[keep.type];
         return (
-            <article onMouseOut={this.onUnEditKeep} onClick={(ev) => this.onEditKeep(ev, keep)} style={keep.style} className={`keep-preview ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
+            <article onMouseOut={this.onUnEditKeep} style={keep.style} className={`keep-preview ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
+                {this.typeButton(keep)}
                 <DynamicCmp doneNote={false} keep={keep} />
                 <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
-                    onCopy={this.props.onCopy} onPin={this.props.onPin} isEditOn={this.state.isEdit} isDetailsOn={false} />
+                    onCopy={this.props.onCopy} onPin={this.props.onPin} isEditOn={this.state.isEdit}
+                     isDetailsOn={false} onEdit={this.onEditKeep} />
             </article>
         )
     }
 }
+
+// onClick={(ev) => this.onEditKeep(ev, keep)} 

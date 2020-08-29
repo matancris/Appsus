@@ -36,33 +36,32 @@ export class KeepEdit extends React.Component {
         if(this.props.removeOnDetails) this.props.removeOnDetails();
     }
 
-    typeButton = (keep) => {
-        switch (keep.type) {
-            case 'NoteTxt': {
-                return (<button className="btn-type"><i className="fas fa-font"></i></button>)
-            }
-            case 'NoteVideo': {
-                return (<button><i className="fab fa-youtube"></i></button>)
-            }
-            case 'NoteImg': {
-                return (<button><i className="fas fa-image"></i></button>)
-            }
-            case 'NoteTodos': {
-                return (<button><i className="fas fa-list-ul"></i></button>)
-            }
-        }
-    }
+    // typeButton = (keep) => {
+    //     switch (keep.type) {
+    //         case 'NoteTxt': {
+    //             return (<button className="btn-type"><i className="fas fa-font"></i></button>)
+    //         }
+    //         case 'NoteVideo': {
+    //             return (<button><i className="fab fa-youtube"></i></button>)
+    //         }
+    //         case 'NoteImg': {
+    //             return (<button><i className="fas fa-image"></i></button>)
+    //         }
+    //         case 'NoteTodos': {
+    //             return (<button><i className="fas fa-list-ul"></i></button>)
+    //         }
+    //     }
+    // }
 
     render() {
         const { keep } = this.props;
         const { isDetailsOn } = this.props
         return (
             <div className={`${isDetailsOn ? "keep-edit-details" : "keep-edit"}`}>
-                {this.typeButton(keep)}
                 <button onClick={this.openColor}><i className="fas fa-palette"></i></button>
                 {this.state.colorsIsShown && <Color keep={keep} closeColors={this.closeColor} onStyleChange={this.onStyleChange} />}
-                {/* {this.state.colorsIsShown && <Color keep={keep} closeColors={this.closeColor} onStyleChange={this.props.onStyleChange} />} */}
                 <button onClick={(ev) => this.props.onPin(keep.id, ev)}><i className="fas fa-thumbtack"></i></button>
+                <button href="#modal" onClick={(ev) => this.props.onEdit(keep)}><i className="far fa-edit"></i></button>
                 <button onClick={(ev) => this.props.onCopy(keep, ev)}><i className="fas fa-clone"></i></button>
                 <button onClick={(ev) => this.onRemove(keep.id, ev)}><i className="fas fa-trash-alt"></i></button>
             </div>

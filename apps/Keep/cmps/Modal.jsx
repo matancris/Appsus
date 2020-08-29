@@ -28,8 +28,8 @@ export class Modal extends React.Component {
         const { isShown } = this.state
         const { selectedKeep } = this.props
         return (
-            <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
-                <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
+            <div id="modal" className={`modal-wrapper   ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
+                <div className="modal-content slide-in-elliptic-top-fwd" onClick={(ev) => ev.stopPropagation()}>
                     <KeepDetails keep={selectedKeep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
                         onCopy={this.props.onCopy} onPin={this.props.onPin} isEditView={true}
                         saveKeep={this.saveKeep} doneNote={this.props.doneNote} onCloseModal={this.onCloseModal} />
