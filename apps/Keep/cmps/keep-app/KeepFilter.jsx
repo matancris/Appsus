@@ -1,7 +1,4 @@
 export class KeepFilter extends React.Component {
-    state = {
-        // filter: ''
-    }
 
     onChangeFilter = (type) => {
         this.props.onSetFilter(type);
@@ -19,7 +16,7 @@ export class KeepFilter extends React.Component {
                 <option value="NoteTxt">Txt</option>
                 <option value="NoteVideo">Video</option>
                 <option value="NoteTodos">Todos</option>
-                <option value="NoteTodos">Audio</option>
+                <option value="NoteAudio">Audio</option>
             </select>
 
             <button className="btn-search"><i className="fas fa-search "></i></button>

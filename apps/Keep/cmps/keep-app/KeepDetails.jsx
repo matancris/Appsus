@@ -60,15 +60,16 @@ export class KeepDetails extends React.Component {
         if (!keep) return <div>Loading....</div>
         const DynamicCmp = this.cmpMap[keep.type];
         return (
-            <article style={keep.style} className={`keep-details ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
+            <article style={keep.style} className={`keep-details flex column space-between ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
                 <DynamicCmp keep={keep} doneNote={this.doneNote} loadKeep={this.loadKeep} />
                 <div className="edit-all-details">
                     <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.onStyleChange}
                         onCopy={this.props.onCopy} onPin={this.props.onPin} isDetailsOn={true}
                         onStyleChange={this.props.onStyleChange} onLoadKeep={this.props.loadKeeps}
                         loadKeep={this.loadKeep} changeStyleDetails={this.changeStyle}
-                        removeOnDetails={this.removeOnDetails} />
-                    <KeepAdd isEdit={true} keep={keep} onAddKeep={this.props.saveKeep} loadKeep={this.loadKeep} />
+                        removeOnDetails={this.removeOnDetails}  getTypeNote={this.props.getTypeNote}/>
+                    <KeepAdd isEdit={true} keep={keep} onAddKeep={this.props.saveKeep} loadKeep={this.loadKeep} 
+                    getTypeNote={this.props.getTypeNote} />
                 </div>
             </article>
         )

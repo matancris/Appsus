@@ -2,7 +2,6 @@
 @import '../../apps/Mail/assets/css/mail-style.css';
 @import './animation.css';
 @import '../../apps/Books/assets/css/book.css';
-
 * {
     box-sizing: border-box;
 }
@@ -132,12 +131,12 @@ svg {
     max-width: 50%;
 }
 
-.nav-links a{
+.nav-links a {
     font-size: 3rem;
     transition: .3s;
 }
 
-.nav-links a:hover{
+.nav-links a:hover {
     color: #373737;
 }
 
@@ -170,8 +169,6 @@ svg {
     font-size: 1.2rem;
 }
 
-
-
 .aside-main-nav .fa-inbox {
     color: green;
 }
@@ -195,7 +192,6 @@ svg {
     cursor: pointer;
     height: 100%;
     align-items: center;
-
     border-radius: 5px 20px 20px 5px;
     transition: 0.3s;
 }
@@ -277,9 +273,28 @@ svg {
 .active-nav {
     color: rgb(195, 104, 0);
 }
-.logo-img{
-    width: 40px;
-    height: 50px;
+
+/* NOTIFICATION */
+
+.notification-box {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    background-color: #c2e5e1;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+    padding: 10px;
+}
+
+.notification-box span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.notification-box h2 {
+    color: #4d4d4d;
 }
 
 /* MEDIA QUERY */
@@ -347,20 +362,18 @@ svg {
     .mail-preview div:first-of-type {
         overflow: hidden;
     }
-   
     /* BOOKS */
-
     .search-add {
         flex-direction: column;
     }
 }
 
-@media (max-width: 550px){
+@media (max-width: 550px) {
     .logo-img {
-        width: 30px;
-        height: 40px;
+        width: 3.5rem;
+        height: 3.5rem;
     }
-    .title-home{
+    .title-home {
         font-size: 4.5em;
     }
 }

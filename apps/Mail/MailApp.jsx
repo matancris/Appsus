@@ -3,6 +3,7 @@ import { mailService } from '../Mail/service/mail-service.js'
 import { MailList } from './cmps/mail-app/MailList.jsx'
 import { MailFilter } from './cmps/mail-app/MailFilter.jsx'
 import { MailCompose } from './cmps/mail-app/MailCompose.jsx'
+import eventBus from '../../service/event-bus-service.js'
 
 export class MailApp extends React.Component {
 
@@ -15,16 +16,22 @@ export class MailApp extends React.Component {
         isComposeShown: false,
         isMobileMenuOpen: false,
         unreadMailAmount: '',
+        keepToMail: null
     }
 
     componentDidMount() {
         const mailSection = new URLSearchParams(window.location.href).get('section')
+        const keepToMail = new URLSearchParams(window.location.href).get('keep')
         if (mailSection) {
             console.log("MailApp -> componentDidMount -> mailSection", mailSection)
             this.setState({ mailsType: mailSection })
         }
         else {
             this.setState({ mailsType: 'income' })
+        }
+        
+        if (keepToMail) {
+            this.setState({ keepToMail, isComposeShown: true })
         }
         this.loadMails();
     }
@@ -53,6 +60,7 @@ export class MailApp extends React.Component {
         if (this.state.mailsType !== 'trash') return
         mailService.removeMail(mailId)
             .then(() => {
+                eventBus.emit('notify', { msg: 'mail have been removed', type: 'success' })
                 this.loadMails()
             })
     }
@@ -61,6 +69,7 @@ export class MailApp extends React.Component {
         if (this.state.mailsType === 'trash') return
         mailService.setTrashType(mailId)
             .then(() => {
+                eventBus.emit('notify', { msg: 'Moved to trash', type: 'success' })
                 this.loadMails()
             })
     }
@@ -94,6 +103,7 @@ export class MailApp extends React.Component {
         }
         mailService.sendToDrafts(draft)
             .then(() => {
+                eventBus.emit('notify', { msg: 'Saved to drafts!', type: 'success' })
                 this.closeCompose()
                 this.loadMails()
             })
@@ -102,6 +112,7 @@ export class MailApp extends React.Component {
     submitCompose = (newMail) => {
         mailService.sendMail(newMail)
             .then(() => {
+                eventBus.emit('notify', { msg: 'The mail have been sent!', type: 'success' })
                 this.closeCompose()
                 this.loadMails()
             })
@@ -114,7 +125,7 @@ export class MailApp extends React.Component {
         const mailSection = new URLSearchParams(window.location.href).get('section')
         this.setState({ mailsType: mailSection })
     }
-    
+
     toggleMobileMenu = () => {
         this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen })
     }
@@ -150,11 +161,11 @@ export class MailApp extends React.Component {
         return (
             <section className="main-mail scale-in-hor-right flex">
                 {this.state.isMobileMenuOpen && <div className="screen" onClick={this.toggleMobileMenu}></div>}
-                <AsideBar openCompose={this.openCompose} onSent={this.openOutcomes} onInbox={this.openInbox} onStarred={this.openStarred} isMobileMenuOpen={this.state.isMobileMenuOpen} onDrafts={this.openDrafts} unreadMailAmount={this.state.unreadMailAmount} onTrash={this.openTrash} onChangeSection={this.changeMailSection} />
+                <AsideBar openCompose={this.openCompose} isMobileMenuOpen={this.state.isMobileMenuOpen} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
                 <div className="mails-container">
                     <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} onOpenMobileMenu={this.toggleMobileMenu} />
                     <MailList mails={mails} changeRead={this.changeRead} removeMail={this.removeMail} toggleStar={this.toggleStar} onSendToTrash={this.sendToTrash} />
-                    {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} onSendToDrafts={this.sendToDrafts} keepValue={this.state.keepValue} />}
+                    {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} onSendToDrafts={this.sendToDrafts} keepToMail={this.state.keepToMail} />}
                 </div>
             </section>
         )

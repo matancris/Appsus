@@ -27,7 +27,6 @@ export class KeepPreview extends React.Component {
     }
 
     onEditKeep = (keep) => {
-        // ev.stopPropagation();
         this.setState({ isEdit: true })
         this.props.onEditKeep(keep);
 
@@ -66,10 +65,9 @@ export class KeepPreview extends React.Component {
                 <DynamicCmp doneNote={false} keep={keep} />
                 <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
                     onCopy={this.props.onCopy} onPin={this.props.onPin} isEditOn={this.state.isEdit}
-                     isDetailsOn={false} onEdit={this.onEditKeep} />
+                     isDetailsOn={false} onEdit={this.onEditKeep}  getTypeNote={this.props.getTypeNote}/>
             </article>
         )
     }
 }
 
-// onClick={(ev) => this.onEditKeep(ev, keep)} 

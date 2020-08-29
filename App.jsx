@@ -8,7 +8,7 @@ import { BookApp } from './apps/Books/BookApp.jsx'
 import { BookDetails } from './apps/Books/BookDetails.jsx'
 import { NavBar } from './cmps/NavBar.jsx'
 import { MailDetails } from './apps/Mail/pages/MailDetails.jsx'
-import { KeepDetails } from './apps/Keep/cmps/keep-app/KeepDetails.jsx'
+import { Notification } from './cmps/Notification.jsx'
 
 
 export class App extends React.Component {
@@ -29,6 +29,7 @@ export class App extends React.Component {
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>
+                    <Notification />
                 </div>
             </Router>
         )
