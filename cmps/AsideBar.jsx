@@ -2,7 +2,6 @@
 // const { NavLink, withRouter } = ReactRouterDOM
 
 export function AsideBar(props) {
-    console.log(props.unreadMailAmount);
     return (
         <nav className={`${props.isMobileMenuOpen ? 'menu-open': ''} aside-bar flex column align-center`}>
             <div className="aside-bar-content flex column space-evenely">
