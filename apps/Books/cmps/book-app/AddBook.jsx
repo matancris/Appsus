@@ -12,7 +12,6 @@ export class AddBook extends React.Component {
     }
 
     onInputChange = () => {
-        console.log(event.target.value);
         if(event.target.value=== '') {
             this.setState({ name:'' , options: []})
             return;

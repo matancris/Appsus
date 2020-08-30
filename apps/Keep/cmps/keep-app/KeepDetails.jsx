@@ -61,7 +61,7 @@ export class KeepDetails extends React.Component {
         const DynamicCmp = this.cmpMap[keep.type];
         return (
             <article style={keep.style} className={`keep-details flex column space-between ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
-                <DynamicCmp keep={keep} doneNote={this.doneNote} loadKeep={this.loadKeep} />
+                <DynamicCmp keep={keep} doneNote={this.doneNote} loadKeep={this.loadKeep} getTypeNote={this.props.getTypeNote}/>
                 <div className="edit-all-details">
                     <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.onStyleChange}
                         onCopy={this.props.onCopy} onPin={this.props.onPin} isDetailsOn={true}

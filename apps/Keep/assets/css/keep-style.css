@@ -9,10 +9,6 @@ html {
   width: 100%;
 }
 
-.container-lists {
-  width: 100%;
-}
-
 button {
   cursor: pointer;
   outline: none;
@@ -33,6 +29,10 @@ hr {
 .type-keep {
   color: gray;
   margin: 0;
+}
+
+.container-lists {
+  width: 100%;
 }
 
 .keep-list {
@@ -91,7 +91,6 @@ hr {
 .keep-preview img {
   width: 100%;
   height: 100%;
-  /* padding-bottom: 50px; */
 }
 
 .keep-preview iframe {
@@ -101,18 +100,13 @@ hr {
   border: none;
 }
 
-/* .keep-preview iframe {
-  width: 90%;
-  height: 100%;
-} */
-
 .keep-preview video {
   width: 90%;
   height: 100%;
 }
 
 .keep-details.img {
- justify-content: space-around;
+  justify-content: space-around;
 }
 
 .keep-details img {

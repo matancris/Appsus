@@ -62,7 +62,7 @@ export class KeepPreview extends React.Component {
         return (
             <article onMouseOut={this.onUnEditKeep} style={keep.style} className={`keep-preview ${(keep.type === 'NoteImg' || keep.type === 'NoteVideo') ? "img" : ""}`}>
                 {this.typeButton(keep)}
-                <DynamicCmp doneNote={false} keep={keep} />
+                <DynamicCmp doneNote={false} keep={keep} getTypeNote={this.props.getTypeNote}/>
                 <KeepEdit keep={keep} onRemove={this.props.onRemove} onStyleChange={this.props.onStyleChange}
                     onCopy={this.props.onCopy} onPin={this.props.onPin} isEditOn={this.state.isEdit}
                      isDetailsOn={false} onEdit={this.onEditKeep}  getTypeNote={this.props.getTypeNote}/>

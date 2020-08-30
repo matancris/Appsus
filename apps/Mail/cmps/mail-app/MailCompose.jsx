@@ -15,7 +15,6 @@ export class MailCompose extends React.Component {
     componentDidMount() {
         const keepValue = this.props.keepToMail
         if (keepValue){
-            console.log(keepValue);
             this.setState({newMail:{...this.state.newMail,  body: keepValue} }, () => console.log(this.state.newMail))
         }
         this.elInput.current.focus()

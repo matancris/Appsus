@@ -22,7 +22,7 @@ export class KeepAdd extends React.Component {
         const value = ev.target.value;
         const type = this.state.keep.type;
         this.setState({ value })
-
+       
         switch (type) {
             case 'NoteTxt': {
                 this.setState({ keep: { ...this.state.keep, info: { txt: value } } })
@@ -82,11 +82,11 @@ export class KeepAdd extends React.Component {
     }
 
     render() {
-        // const { keep } = this.state.keep
         return (
             <div className='keep-add'>
                 <div className="keep-add-container">
-                    <input ref={this.elInput} type="search" className="input-search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} />
+                    <textarea ref={this.elInput} type="search" className="input-search" value={this.state.value} placeholder={this.getPlaceHolder(this.state.keep.type)} onChange={this.onInputChange} >
+                    </textarea>
                     <button onClick={() => this.onChange('NoteTxt')}><i className="fas fa-font text-btn"></i></button>
                     <button onClick={() => this.onChange('NoteImg')}><i className="fas fa-image img-btn"></i></button>
                     <button onClick={() => this.onChange('NoteVideo')}><i className="fab fa-youtube video-btn"></i></button>
@@ -98,4 +98,3 @@ export class KeepAdd extends React.Component {
         )
     }
 }
-

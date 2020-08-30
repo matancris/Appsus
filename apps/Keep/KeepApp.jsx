@@ -139,7 +139,8 @@ export class KeepApp extends React.Component {
                 <KeepFilter onSetFilter={this.setFilter} />
                 <div className="container-lists" >
                     <KeepList ispins={true} keeps={pinKeeps} onRemove={this.removeKeep} onStyleChange={this.styleChange}
-                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} doneNote={this.doneNote} />
+                        onCopy={this.copyKeep} onPin={this.keepPin} onEditKeep={this.editKeep} doneNote={this.doneNote} 
+                        getTypeNote={this.getTypeNote} />
                     <hr />
 
                     <KeepList ispins={false} keeps={keepsToShow} onRemove={this.removeKeep} onStyleChange={this.styleChange}

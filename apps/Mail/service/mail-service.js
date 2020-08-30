@@ -79,7 +79,6 @@ function toggleStar(mail) {
             .then(mails => {
                 var currMail = mails[mailIdx]
                 currMail.isStarred = !currMail.isStarred;
-                console.log(mails);
                 storageService.saveToStorage(MAILS_KEY, mails)
                 return Promise.resolve()
             }))
