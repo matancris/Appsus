@@ -92,12 +92,3 @@
     }
 }
 
-@media (max-width: 550px) {
-    .logo-img {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-    .title-home {
-        font-size: 4.5em;
-    }
-}
