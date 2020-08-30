@@ -327,6 +327,11 @@ hr {
   outline: none;
 }
 
+.keep-txt textarea{
+  background-color:transparent;
+  border: none;
+}
+
 @media(max-width: 1150px) {
   .keep-list {
     columns: 3;
