@@ -90,5 +90,18 @@
     .search-add {
         flex-direction: column;
     }
+
+    .book-details .book-preview{
+        flex-direction: column;
+    }
+    .book-details >*{
+        max-width: 300px;
+    }
+    .book-data>*{
+        font-size: 0.9rem;
+    }
+    .book-data{
+        width: 300px;
+    }
 }
 

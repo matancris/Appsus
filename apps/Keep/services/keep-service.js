@@ -128,7 +128,7 @@ var gKeeps = [
             todos: [
                 { txt: "Add Audio to the keeps", doneAt: 187111111 },
                 { txt: "Add canvas to the keeps", doneAt: null },
-                { txt: "Send massage to the best practitioner Shahar Paratz", doneAt: null }
+                { txt: "Fix the bugs", doneAt: 187111111 }
             ]
         },
         style: {
