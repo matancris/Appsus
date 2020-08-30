@@ -119,6 +119,7 @@ export class MailApp extends React.Component {
         this.props.history.push(`/mail?&section=${section}`)
         const mailSection = new URLSearchParams(window.location.href).get('section')
         this.setState({ mailsType: mailSection })
+        if (this.state.isMobileMenuOpen) this.toggleMobileMenu();
     }
 
     toggleMobileMenu = () => {
