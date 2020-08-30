@@ -13,7 +13,8 @@ export function NoteTodos(props) {
     return (
         <section>
             {props['keep'].info.todos.map((todo, idx) => {
-                return <li key={idx} onClick={() => { onTodoNote(idx) }} className={`${todo.doneAt ? "done-note" : " "} `}>
+                return <li key={idx} onClick={() => {onTodoNote(idx)}} className={`${todo.doneAt ? "done-note" : " "} `
+                     }>
                     {todo.txt} {todo.doneAt && getTime(todo.doneAt)}
                 </li>
             })

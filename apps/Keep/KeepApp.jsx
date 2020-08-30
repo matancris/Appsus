@@ -23,7 +23,7 @@ export class KeepApp extends React.Component {
             keep.info.txt = mailToKeep;
             keepService.save(keep)
             .then(() =>{this.loadKeeps()})
-            .then(() => this.setState({selectedKeep: keep}, () => console.log(this.state.keeps, keep)))
+            .then(() => this.setState({selectedKeep: keep}))
         }
         else this.loadKeeps();
     }
@@ -101,7 +101,6 @@ export class KeepApp extends React.Component {
 
     editKeep = (keep) => {
         this.setState({ selectedKeep: keep })
-        // this.props.history.push('#')
     }
 
     unSelectedKeep = () => {

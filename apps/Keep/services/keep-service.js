@@ -247,7 +247,7 @@ function doneNote(keepId,keepTodoIdx){
     return query()
     .then(keeps => {
         const keepIdx = keeps.findIndex(keep => keep.id === keepId)
-        if(keeps[keepIdx].info.todos[keepTodoIdx].doneAt === null) keeps[keepIdx].info.todos[keepTodoIdx].doneAt = new Date();
+        if(keeps[keepIdx].info.todos[keepTodoIdx].doneAt === null) keeps[keepIdx].info.todos[keepTodoIdx].doneAt = Date.now();
         else keeps[keepIdx].info.todos[keepTodoIdx].doneAt = null;
         storageService.saveToStorage(KEEP_KEY, keeps);
         return Promise.resolve();
