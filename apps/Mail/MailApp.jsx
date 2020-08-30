@@ -28,7 +28,7 @@ export class MailApp extends React.Component {
         else {
             this.setState({ mailsType: 'income' })
         }
-        
+
         if (keepToMail) {
             this.setState({ keepToMail, isComposeShown: true })
         }
