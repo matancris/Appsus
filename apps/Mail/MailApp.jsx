@@ -8,7 +8,6 @@ import eventBus from '../../service/event-bus-service.js'
 export class MailApp extends React.Component {
 
     state = {
-        mailToAdd: '',
         filterBy: '',
         filterRatio: '',
         mails: [],
@@ -45,28 +44,15 @@ export class MailApp extends React.Component {
 
     // MAIL EDIT
 
-    changeRead = (mail, isUnReadClick) => {
-        mailService.updateReaden(mail, isUnReadClick)
+    updateMail = (mailId, paramToChange, isUnReadClick) => {
+        mailService.updateMail(mailId, paramToChange, isUnReadClick)
             .then(() => {
-                this.loadMails()
-            })
-
-    }
-
-    removeMail = (mailId) => {
-        if (this.state.mailsType !== 'trash') return
-        mailService.removeMail(mailId)
-            .then(() => {
-                eventBus.emit('notify', { msg: 'mail have been removed', type: 'success' })
-                this.loadMails()
-            })
-    }
-
-    sendToTrash = (mailId) => {
-        if (this.state.mailsType === 'trash') return
-        mailService.setTrashType(mailId)
-            .then(() => {
-                eventBus.emit('notify', { msg: 'Moved to trash', type: 'success' })
+                if (paramToChange === 'removeMail' && this.state.mailsType === 'trash'){
+                    eventBus.emit('notify', {msg: 'mail have been removed'})
+                }
+                else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash'){
+                    eventBus.emit('notify', { msg: 'Moved to trash'})
+                }
                 this.loadMails()
             })
     }
@@ -74,11 +60,6 @@ export class MailApp extends React.Component {
     setFilter = (ev) => {
         if (ev.target.type === 'search') this.setState({ filterBy: ev.target.value })
         else if (ev.target.type === 'radio') this.setState({ filterRatio: ev.target.value })
-    }
-
-    toggleStar = (mail) => {
-        mailService.toggleStar(mail)
-            .then(() => { this.loadMails() })
     }
 
     // COMPOSE
@@ -159,8 +140,8 @@ export class MailApp extends React.Component {
                 <AsideBar openCompose={this.openCompose} isMobileMenuOpen={this.state.isMobileMenuOpen} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
                 <div className="mails-container">
                     <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} onOpenMobileMenu={this.toggleMobileMenu} />
-                    <MailList mails={mails} changeRead={this.changeRead} removeMail={this.removeMail} toggleStar={this.toggleStar} onSendToTrash={this.sendToTrash} />
-                    {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} onSendToDrafts={this.sendToDrafts} keepToMail={this.state.keepToMail} />}
+                    <MailList mails={mails} onUpdateMail={this.updateMail} />
+                    {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} keepToMail={this.state.keepToMail} />}
                 </div>
             </section>
         )
