@@ -5,20 +5,16 @@ import { utilsService } from '../../../service/utils-service.js'
 export const mailService = {
     query,
     sendMail,
-    updateReaden,
-    removeMail,
     getMailById,
-    toggleStar,
+    updateMail,
     sendToDrafts,
     countUnreadMails,
-    setTrashType
-
 }
 
 const MAILS_KEY = "mails";
 
 var gMails = [
-{ id: utilsService.makeId(), type: 'income', address: 'itay', subject: 'Be There!', body: `Hi Matan, Thanks for signing up!Lots of software say they can do anything and everything for you. We are *not* one of them. KiSSFLOW is not a jack of all trades. We have mastered one thing really well: *workflows*.Now, do you have a workflow problem or a task management problem or both?! Tough, right!? That’s exactly why I am writing to you. Within 5 minutes I can assess if KiSSFLOW is best fit for the problem you have, saving you lots of time on evaluation. I value time and wish neither of us waste it.I will call you in the next 30 minutes or do you want to do this over email? Cheers, Ben`, isStarred: false, isRead: false, sentAt: 1551133930594 },
+    { id: utilsService.makeId(), type: 'income', address: 'itay', subject: 'Be There!', body: `Hi Matan, Thanks for signing up!Lots of software say they can do anything and everything for you. We are *not* one of them. KiSSFLOW is not a jack of all trades. We have mastered one thing really well: *workflows*.Now, do you have a workflow problem or a task management problem or both?! Tough, right!? That’s exactly why I am writing to you. Within 5 minutes I can assess if KiSSFLOW is best fit for the problem you have, saving you lots of time on evaluation. I value time and wish neither of us waste it.I will call you in the next 30 minutes or do you want to do this over email? Cheers, Ben`, isStarred: false, isRead: false, sentAt: 1551133930594 },
     { id: utilsService.makeId(), type: 'income', address: 'itay', subject: 'Welcome to Slack', body: 'Welcome to Slack! We\'re happy you\'re here.When you created Front Onboarding, we didn\'t ask you to set a password. It\'s time to do that now. If you don\'t set a password within two days, we\'ll automatically log you out.', isStarred: false, isRead: true, sentAt: 1551133930594 },
     { id: utilsService.makeId(), type: 'income', address: 'itay', subject: 'Wassap?', body: 'Hi Leads, We noticed that you signed up for Dropbox a while ago, but never installed the software. Installing Dropbox lets you: Easily save files to your Dropbox Get to your files from any computer or phone Share photos or docs straight from your desktop Download Dropbox here, Enjoy! The Dropbox Team If you need a refresh, check out our tour.', isStarred: false, isRead: false, sentAt: 1551133930594 },
     { id: utilsService.makeId(), type: 'income', address: 'Hilla', subject: 'Wassap?', body: 'Pick up!', isStarred: false, isRead: false, sentAt: 1551133930594 },
@@ -59,27 +55,25 @@ function getMailById(mailId) {
         })
 }
 
-function updateReaden(mail, isUnReadClick = true) {
-    return getIdxById(mail.id)
+function updateMail(mailId, paramToChange, isUnReadClick = true) {
+    return getIdxById(mailId)
         .then((mailIdx) => query()
             .then(mails => {
                 var currMail = mails[mailIdx]
-                currMail.isRead = isUnReadClick;
+                if (paramToChange === 'toggleStar') {
+                    currMail.isStarred = !currMail.isStarred;
+                }
+                else if (paramToChange === 'removeMail') {
+                    if (currMail.type === 'trash') mails = mails.filter(mail => mail.id !== mailId);
+                    else currMail.type = 'trash';
+                }
+                else if (paramToChange === 'setRead') {
+                    currMail.isRead = isUnReadClick;
+                }
                 storageService.saveToStorage(MAILS_KEY, mails)
                 return Promise.resolve()
-            }))
-
-}
-
-function toggleStar(mail) {
-    return getIdxById(mail.id)
-        .then((mailIdx) => query()
-            .then(mails => {
-                var currMail = mails[mailIdx]
-                currMail.isStarred = !currMail.isStarred;
-                storageService.saveToStorage(MAILS_KEY, mails)
-                return Promise.resolve()
-            }))
+            })
+        )
 }
 
 function getIdxById(mailId) {
@@ -153,25 +147,8 @@ function countUnreadMails() {
         })
 }
 
-function removeMail(mailId) {
-    return query()
-        .then((mails) => {
-            mails = mails.filter(mail => mail.id !== mailId)
-            storageService.saveToStorage(MAILS_KEY, mails);
-            return Promise.resolve();
-        })
-}
 
-function setTrashType(mailId){
-    return getIdxById(mailId)
-        .then((mailIdx) => query()
-            .then(mails => {
-                var currMail = mails[mailIdx]
-                currMail.type = 'trash';
-                storageService.saveToStorage(MAILS_KEY, mails)
-                return Promise.resolve()
-            }))
-}
+
 
 
 
