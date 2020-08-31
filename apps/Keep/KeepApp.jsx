@@ -79,8 +79,10 @@ export class KeepApp extends React.Component {
     }
 
 
-    getKeepsForDisplay() {
-        let keeps = this.state.keeps.filter(keep => keep.isPinned === false);
+    getKeepsForDisplay(isPin) {
+        let keeps;
+        if(!isPin) keeps = this.state.keeps.filter(keep => keep.isPinned === false)
+        else keeps = this.state.keeps.filter(keep => keep.isPinned === true);
         if (this.state.filterByTxt !== '') {
             keeps = keeps.filter(keep => {
                 if (keep.type === "NoteTxt")
@@ -89,7 +91,7 @@ export class KeepApp extends React.Component {
         }
         else {
             if (this.state.filterBy === 'All') return keeps;
-            keeps = this.state.keeps.filter(keep => keep.type === this.state.filterBy)
+            keeps = keeps.filter(keep => keep.type === this.state.filterBy)
         }
         return keeps;
     }
@@ -129,8 +131,10 @@ export class KeepApp extends React.Component {
     }
 
     render() {
-        const keepsToShow = this.getKeepsForDisplay();
-        const pinKeeps = this.getKeepsPins();
+        const keepsToShow = this.getKeepsForDisplay(false);
+        const pinKeeps = this.getKeepsForDisplay(true);
+        // const pinKeeps = this.getKeepsPins();
+        // const pinKeepsToShow = this.getKeepsForDisplay(pinKeeps);
         const { selectedKeep } = this.state;
         return (
             <section id="keep-up" className="keep-app scale-in-hor-right align-center-text">

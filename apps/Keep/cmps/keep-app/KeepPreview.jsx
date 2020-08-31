@@ -3,7 +3,6 @@
 import { NoteAudio } from "../notes-app/NoteAudio.jsx"
 import { NoteVideo } from "../notes-app/NoteVideo.jsx"
 import { NoteImg } from "../notes-app/NoteImg.jsx"
-import { NoteMap } from "../notes-app/NoteMap.jsx"
 import { NoteTodos } from "../notes-app/NoteTodos.jsx"
 import { NoteTxt } from "../notes-app/NoteTxt.jsx"
 
@@ -21,7 +20,6 @@ export class KeepPreview extends React.Component {
         NoteAudio: NoteAudio,
         NoteVideo: NoteVideo,
         NoteImg: NoteImg,
-        NoteMap: NoteMap,
         NoteTodos: NoteTodos,
         NoteTxt: NoteTxt
     }
